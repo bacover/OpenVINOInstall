@@ -25,7 +25,7 @@
 		<ul>
 			<li>If you have an Intel® Quartus® license, use  <a href="http://fpgasoftware.intel.com/17.1/?edition=pro&amp;platform=linux&amp;download_manager=dlm3&amp;product=qprogrammer#tabs-4">QuartusProProgrammerSetup-17.1.0.240-linux</a>. This software uses about 35 GB of disk space.
 
-				<p><img alt="Quartus® Pro download screen" src="https://software.intel.com/sites/default/files/managed/7c/b9/Quartus%20Pro%20Download.png" title=""></p>
+<p><img alt="Quartus® Pro download screen" src="https://software.intel.com/sites/default/files/managed/7c/b9/Quartus%20Pro%20Download.png" title=""></p>
 			</li>
 			<li>If you do not have the license, use <a href="http://fpgasoftware.intel.com/17.1/?edition=lite&amp;platform=linux&amp;download_manager=dlm3&amp;product=qprogrammer#tabs-4">QuartusPrimeLiteProgrammerSetup-17.1.0.590-linux</a>. This software uses about 1.4 GB of disk space.
 				<p><img alt="download screen for Quartus Lite" src="https://software.intel.com/sites/default/files/managed/b5/6a/Quartus%20Lite%20Download.png" title=""></p>
@@ -66,9 +66,9 @@
 	<li>Copy <code>setup_env.sh</code> to your home directory:
 		<pre class="brush:bash; class-name:dark;">cp setup_env.sh /home/&lt;user&gt;</pre>
 
-		<pre class="brush:bash; class-name:dark;">source /home/&lt;user&gt;/setup_env.sh</pre>
-	</li>
-	<li>Configure the FPGA Driver Blacklist:
+<pre class="brush:bash; class-name:dark;">source /home/&lt;user&gt;/setup_env.sh</pre>
+	
+<li>Configure the FPGA Driver Blacklist:
 		<pre class="brush:bash; class-name:dark;">sudo mv config/blacklist-altera-cvp.conf /etc/modprobe.d</pre>
 	</li>
 	<li>Copy the USB rules:
@@ -81,48 +81,48 @@
 	<li>[OPTIONAL] Validate that the cable is connected:
 		<pre class="brush:bash; class-name:dark;">lsusb | grep Altera</pre>
 
-		<p>You should see a message similar to:</p>
+<p>You should see a message similar to:</p>
 		<code>Bus 001 Device 005: ID 09fb:6010 Altera</code></li>
 	<br>
 	<li>Run <code>jtagconfig</code>:
 		<pre class="brush:bash; class-name:dark;">jtagconfig</pre>
 
-		<p>Your output is similar to:</p>
+<p>Your output is similar to:</p>
 
-		<pre class="brush:bash; class-name:dark;">USB-BlasterII [1-14]
+<pre class="brush:bash; class-name:dark;">USB-BlasterII [1-14]
 02E660DD 10AX115H1(.|E2|ES)/10AX115H2/..
 020A40DD 5M(1270ZF324|2210Z)/EPM2210</pre>
-	</li>
-	<br>
+</li>
+<br>
 	<li>Use <code>jtagconfig</code> to slow the clock:
 		<pre class="brush:bash; class-name:dark;">jtagconfig --setparam 1 JtagClock 6M</pre>
 	</li>
 	<li>(OPTIONAL) Confirm the clock is set to 6M:
 		<pre class="brush:bash; class-name:dark;">jtagconfig --getparam 1 JtagClock</pre>
 
-		<p>You should see the following:</p>
+<p>You should see the following:</p>
 		<code>6M</code></li>
 	<br>
 	<li>Go to the <code>config</code> directory:
 		<pre class="brush:bash; class-name:dark;">cd config</pre>
 	</li>
 	<li>Use Intel® Quartus® software to program <code>top.sof</code> and <code>max5_150.pof</code>. These files are from the <code>fpga_support_files.tgz</code> archive:
-		<pre class="brush:bash; class-name:dark;">quartus_pgm -c 1 -m JTAG -o "p;max5_150.pof@2"</pre>
+<pre class="brush:bash; class-name:dark;">quartus_pgm -c 1 -m JTAG -o "p;max5_150.pof@2"</pre>
 
-		<pre class="brush:bash; class-name:dark;">quartus_pgm -c 1 -m JTAG -o "p;top.sof"</pre>
-	</li>
+<pre class="brush:bash; class-name:dark;">quartus_pgm -c 1 -m JTAG -o "p;top.sof"</pre>
+</li>
 	<li>Restart your computer:
 		<pre class="brush:bash; class-name:dark;">reboot</pre>
 	</li>
 	<li>Verify that you successfully programmed <code>top.sof</code>:
 		<pre class="brush:bash; class-name:dark;">sudo lspci |grep Alt</pre>
 
-		<p>If successful, you see a response similar to:</p>
+<p>If successful, you see a response similar to:</p>
 		<code>01:00.0 Processing accelerators: Altera Corporation Device 2494 (rev 01)</code></li>
 </ol>
 
 <p class="note"><strong>NOTE</strong>: You will finish setting up the card after you install Intel Distribution of OpenVINO toolkit.</p>
-<h2><a id="complete aria 10 gx" name="complete aria 10 gx"></a>Complete Intel® Arria® 10 FPGA Setup</h2>
+<h2><a id="complete aria 10 gx" name="complete aria 10 gx"></a>3. Complete Intel® Arria® 10 FPGA Setup</h2>
 
 <p>For the Intel Vision Accelerator Design with Intel Arria 10 FPGA, download the <code>fpga_support_files</code> archive:</p>
 
@@ -152,7 +152,7 @@
 	<li>Run the FPGA dependencies script, which allows OpenCL to support Ubuntu and recent kernels:
 		<pre class="brush:bash; class-name:dark;">./install_openvino_fpga_dependencies.sh</pre>
 
-		<ul>
+<ul>
 			<li>When asked, select the FPGA card, Intel® GPU, and Movidius Neural Compute Stick, then you can install the correct dependencies.</li>
 			<li>If you installed the 4.14 kernel, you will need to reboot the machine and select the new kernel in the Ubuntu (grub) boot menu. You will also need to redo steps 1 and 2 to set up your environmental variables again.</li>
 		</ul>
@@ -174,7 +174,7 @@
 <p>For the Intel Distribution of OpenVINO toolkit R5 with Intel® Vision Acceleration Design with Intel® Arria® 10 FPGA, continue to the <a href="#set-up-vision-accelerator-design-r5">next section</a> to program the board before running the samples and programming bitstreams. </p>
 
 <p>Otherwise, you completed the FPGA installation and configuration.</p>
-<h2><a id="set-up-vision-accelerator-design-r5" name="set-up-vision-accelerator-design-r5"></a>Set Up the Intel® Vision Accelerator Design with Intel® Arria® 10 FPGA for R5</h2>
+<h2><a id="set-up-vision-accelerator-design-r5" name="set-up-vision-accelerator-design-r5"></a>4. Set Up the Intel® Vision Accelerator Design with Intel® Arria® 10 FPGA for R5</h2>
 
 <p>For the R5 release, the Intel® Distribution of OpenVINO™ toolkit introduced a new board support package (BSP) <code>a10_1150_sg1</code> for the Intel® Vision Accelerator Design with an Intel® Arria 10 FPGA, which is included into the <code>fpga_support_files.tgz</code> archive. To program the bitstreams for the Intel Distribution of OpenVINO toolkit R5, you need to program the BSP into the board using the USB blaster:</p>
 
@@ -202,11 +202,11 @@ find a10_1150_sg1 -type f -print0 | xargs -0 dos2unix	</pre>
 					<li>Connect the F end of the cable to point F on the FPGA download cable.</li>
 				</ul>
 
-				<p>[[{"fid":"792820","view_mode":"default","fields":{"format":"default","field_file_image_alt_text[und][0][value]":"Connection from JTAG Port to Cable to Intel FPGA Download Cable","field_file_image_title_text[und][0][value]":false,"field_style":"","media[field_big_photo]":"","field_big_photo[fid]":"0"},"link_text":null,"type":"media","field_deltas":{"5":{"format":"default","field_file_image_alt_text[und][0][value]":"Connection from JTAG Port to Cable to Intel FPGA Download Cable","field_file_image_title_text[und][0][value]":false,"field_style":"","media[field_big_photo]":"","field_big_photo[fid]":"0"}},"attributes":{"alt":"Connection from JTAG Port to Cable to Intel FPGA Download Cable","class":"media-element file-default"}}]]</p>
-			</li>
+
+</li>
 			<li>From point F end of the cable to point F on the FPGA download cable, the connection is as shown:
-				<p>[[{"fid":"792821","view_mode":"default","fields":{"format":"default","field_file_image_alt_text[und][0][value]":"Connection from Cable to Intel FPGA Download Cable","field_file_image_title_text[und][0][value]":false,"field_style":"","media[field_big_photo]":"","field_big_photo[fid]":"0"},"link_text":null,"type":"media","field_deltas":{"6":{"format":"default","field_file_image_alt_text[und][0][value]":"Connection from Cable to Intel FPGA Download Cable","field_file_image_title_text[und][0][value]":false,"field_style":"","media[field_big_photo]":"","field_big_photo[fid]":"0"}},"attributes":{"alt":"Connection from Cable to Intel FPGA Download Cable","class":"media-element file-default"}}]]</p>
-			</li>
+
+</li>
 		</ol>
 	</li>
 	<li>Source the <code>setup_env.sh</code> script from the <code>fpga_support_files</code> to set up the environment variables:
@@ -226,12 +226,12 @@ find a10_1150_sg1 -type f -print0 | xargs -0 dos2unix	</pre>
 		<pre class="brush:bash; class-name:dark;">jtagconfig
 </pre>
 
-		<p>Your output is similar to:</p>
+<p>Your output is similar to:</p>
 
-		<pre class="brush:bash; class-name:dark;">1) USB-Blaster [1-6]
+<pre class="brush:bash; class-name:dark;">1) USB-Blaster [1-6]
 02E660DD   10AX115H1(.|E2|ES)/10AX115H2/.. 
 </pre>
-	</li>
+</li>
 	<li>Download <a href="http://fpgasoftware.intel.com/17.1/?edition=lite">Quartus Prime Lite Edition 17.1</a>. Install the Quartus Prime Lite to <code>/home/&lt;user&gt;/intelFPGA/17.1</code> directory.
 		<p class="note"><strong>NOTE</strong>: You will need the complete Quartus Prime Lite version when you want to program the <code>boardtest_1ddr_top.aocx</code> into the flash for permanent availability.</p>
 	</li>
@@ -247,18 +247,18 @@ find a10_1150_sg1 -type f -print0 | xargs -0 dos2unix	</pre>
 		<pre class="brush:bash; class-name:dark;">aocl flash acl0 boardtest_1ddr_top.aocx
 </pre>
 
-		<p class="note"><strong>NOTE</strong>: You will need the USB Blaster for this.</p>
+<p class="note"><strong>NOTE</strong>: You will need the USB Blaster for this.</p>
 	</li>
 	<li>Reboot the host system.</li>
 	<li>Check if the host system recognizes the Intel® Vision Accelerator Design with Intel® Arria® 10 FPGA board. Confirm you can detect the PCIe card:
 		<pre class="brush:bash; class-name:dark;">lspci | grep -i Altera
 </pre>
 
-		<p>Your output is similar to:</p>
+<p>Your output is similar to:</p>
 
-		<pre class="brush:bash; class-name:dark;">01:00.0 Processing accelerators: Altera Corporation Device 2494 (rev 01)
+<pre class="brush:bash; class-name:dark;">01:00.0 Processing accelerators: Altera Corporation Device 2494 (rev 01)
 </pre>
-	</li>
+</li>
 	<li>Source the <code>setup_env.sh</code> script from the <code>fpga_support_files</code> to setup the environment variables:
 		<pre class="brush:bash; class-name:dark;">source /home/&lt;user&gt;/Downloads/fpga_support_file/setup_env.sh
 </pre>
@@ -267,22 +267,22 @@ find a10_1150_sg1 -type f -print0 | xargs -0 dos2unix	</pre>
 		<pre class="brush:bash; class-name:dark;">aocl uninstall /opt/altera/aocl-pro-rte/aclrte-linux64/board/&lt;R4_BSP_package&gt;/			</pre>
 	</li>
 	<li>Export and source the environment script:
-		<pre class="brush:bash; class-name:dark;">export AOCL_BOARD_PACKAGE_ROOT=/opt/altera/aocl-pro-rte/aclrte-linux64/board/a10_1150_sg1
+<pre class="brush:bash; class-name:dark;">export AOCL_BOARD_PACKAGE_ROOT=/opt/altera/aocl-pro-rte/aclrte-linux64/board/a10_1150_sg1
 </pre>
 
-		<pre class="brush:bash; class-name:dark;">source /opt/altera/aocl-pro-rte/aclrte-linux64/init_opencl.sh
+<pre class="brush:bash; class-name:dark;">source /opt/altera/aocl-pro-rte/aclrte-linux64/init_opencl.sh
 </pre>
-	</li>
+</li>
 	<li>Install OpenCL devices:
 		<pre class="brush:bash; class-name:dark;">aocl install	</pre>
 	</li>
 	<li>Run the <code>diagnose</code> command:
 		<pre class="brush:bash; class-name:dark;">aocl diagnose		</pre>
 
-		<p>You should see <code>DIAGNOSTIC_PASSED</code> before proceeding to the next steps.</p>
+<p>You should see <code>DIAGNOSTIC_PASSED</code> before proceeding to the next steps.</p>
 	</li>
 </ol>
-<h2><a id="program a bitstream" name="program a bitstream"></a>Program a Bitstream</h2>
+<h2><a id="program a bitstream" name="program a bitstream"></a>5. Program a Bitstream</h2>
 
 <p>The bitstream you program should correspond to the topology you want to deploy. In this section, you program a SqueezeNet bitstream and deploy the classification sample with a SqueezeNet model that you used the Model Optimizer to convert in the demo above.</p>
 
