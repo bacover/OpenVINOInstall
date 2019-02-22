@@ -1,7 +1,4 @@
-
-#installtion Intel® Vision Acceleration Design with Intel® Arria® 10 FPGA
-
-<p class="note"><strong>NOTE</strong>: If you have the Intel® Vision Acceleration Design with Intel® Arria® 10 FPGA, please start with step 3 to <a href="#install openvino">Install the Intel® Distribution of OpenVINO™ Toolkit </a></p>
+<p class="note"><strong>NOTE</strong>: This installation guide is written for the Intel® Arria® 10 GX FPGA Development Kit on Linux.</p>
 
 <p>Installation Notes:</p>
 
@@ -13,19 +10,15 @@
 </ul>
 
 <hr>
-<h2>Configure the Intel® Arria® 10 GX FPGA Development Kit<a id="configure aria 10 gx fpga" name="configure aria 10 gx fpga"></a></h2>
-
-<p class="note"><strong>NOTE</strong>: The steps in the two following sections are required only for the Intel® Arria® 10 GX FPGA Development Kit.<br>
-	If you have EITHER the PAC or (SHOULD THIS BE IN LINKS INSTEAD) the Intel® Vision Acceleration Design with Intel® Arria® 10 FPGA, please skip to <a href="#install openvino">Install the OpenVINO™ Toolkit .</a></p>
+<h2>1. Configure the Intel® Arria® 10 GX FPGA Development Kit<a id="configure aria 10 gx fpga" name="configure aria 10 gx fpga"></a></h2>
 
 <p>To configure the Intel® Arria® 10 GX FPGA Development Kit, use the instruction in the <a href="https://www.intel.com/content/www/us/en/programmable/documentation/tgy1490191698959.html?_ga=2.246291212.90797072.1535473709-1926199859.1534783437">Configuring the Intel® Arria 10 GX FPGA Development Kit for the Intel FPGA SDK for OpenCL</a> guide. Stop after you configure and install the Intel Arria 10 GX FPGA Development Kit board. Do not follow the steps in the rest of the document. Instead, return to this document upon completing the specified section.</p>
 
 <p><img alt="stop after initializing the Arria 10 card" src="https://software.intel.com/sites/default/files/managed/43/e6/initialize%20STOP%20copy.png" title="shows place to return to the install guide"></p>
 
-<h2>Program the Intel® Arria® 10 GX FPGA Development Kit<a id="program aria 10 gx" name="program aria 10 gx"></a></h2>
+<h2>2. Program the Intel® Arria® 10 GX FPGA Development Kit<a id="program aria 10 gx" name="program aria 10 gx"></a></h2>
 
-<p class="note"><strong>NOTE</strong>: You need to do this only once, after you set up the FPGA board. These steps are not necessary for the Intel® Vision Acceleration Design with Intel® Arria® 10 FPGA.<br>
-	If you have the Intel Vision Acceleration Design with Intel Arria 10 FPGA, skip to <a href="#install openvino">Install the Intel® Distribution of OpenVINO™ Toolkit</a>.</p>
+<p class="note"><strong>NOTE</strong>: You need to do this only once, after you set up the FPGA board.</p>
 
 <ol>
 	<li>Use one of the following two links to download the Intel® Quartus® software, depending on the version you want:
