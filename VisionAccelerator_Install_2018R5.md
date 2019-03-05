@@ -1,4 +1,5 @@
-<p class="note"><strong>NOTE</strong>: This installation guide is written for the Intel® Arria® 10 GX FPGA Development Kit on Linux (Ubuntu/CentOS).</p>
+
+<p class="note"><strong>NOTE</strong>: This installation guide is written for the Intel® Vision Accelerator Design with an Intel® Arria 10 FPGA (IEI's Mustang-F100-A10) on Linux (Ubuntu/CentOS).</p>
 
 <p>Installation Notes:</p>
 
@@ -10,9 +11,9 @@
 </ul>
 
 <hr>
-<h2>1. Configure the Intel® Arria® 10 GX FPGA Development Kit<a id="configure aria 10 gx fpga" name="configure aria 10 gx fpga"></a></h2>
+<h2>1. Configure the Intel® Vision Accelerator Design with an Intel® Arria 10 FPGA<a id="configure aria 10 gx fpga" name="configure aria 10 gx fpga"></a></h2>
 
-<p>To configure the Intel® Arria® 10 GX FPGA Development Kit, use the instruction in the <a href="https://www.intel.com/content/www/us/en/programmable/documentation/tgy1490191698959.html?_ga=2.246291212.90797072.1535473709-1926199859.1534783437">Configuring the Intel® Arria 10 GX FPGA Development Kit for the Intel FPGA SDK for OpenCL</a> guide. Stop after you configure and install the Intel Arria 10 GX FPGA Development Kit board. Do not follow the steps in the rest of the document. Instead, return to this document upon completing the specified section.</p>
+<p>To configure the Intel® Vision Accelerator Design with an Intel® Arria 10 FPGA, use the instruction in the <a href="https://www.intel.com/content/www/us/en/programmable/documentation/tgy1490191698959.html?_ga=2.246291212.90797072.1535473709-1926199859.1534783437">Configuring the Intel® Arria 10 GX FPGA Development Kit for the Intel FPGA SDK for OpenCL</a> guide. Stop after you configure and install the Intel Arria 10 GX FPGA Development Kit board. Do not follow the steps in the rest of the document. Instead, return to this document upon completing the specified section.</p>
 
 <p><img alt="stop after initializing the Arria 10 card" src="https://software.intel.com/sites/default/files/managed/43/e6/initialize%20STOP%20copy.png" title="shows place to return to the install guide"></p>
 
@@ -23,11 +24,11 @@
 <ol>
 	<li>Use one of the following two links to download the Intel® Quartus® software, depending on the version you want:
 		<ul>
-			<li>If you have an Intel® Quartus® license, use  <a href="http://fpgasoftware.intel.com/17.1/?edition=pro&amp;platform=linux&amp;download_manager=dlm3&amp;product=qprogrammer#tabs-4">QuartusProProgrammerSetup-17.1.0.240-linux</a>. This software uses about 35 GB of disk space.
+			<li>If you have an Intel® Quartus® license, use  <a href="http://fpgasoftware.intel.com/17.1/?edition=pro&amp;platform=linux&amp;download_manager=dlm3&amp;product=qprogrammer#tabs-4">QuartusProProgrammerSetup-17.1.0.240-linux</a>. This software uses about 500 MB of disk space.
 
 <p><img alt="Quartus® Pro download screen" src="https://software.intel.com/sites/default/files/managed/7c/b9/Quartus%20Pro%20Download.png" title=""></p>
 			</li>
-			<li>If you do not have the license, use <a href="http://fpgasoftware.intel.com/17.1/?edition=lite&amp;platform=linux&amp;download_manager=dlm3&amp;product=qprogrammer#tabs-4">QuartusPrimeLiteProgrammerSetup-17.1.0.590-linux</a>. This software uses about 1.4 GB of disk space.
+			<li>If you do not have the license, use <a href="http://fpgasoftware.intel.com/17.1/?edition=lite&amp;platform=linux&amp;download_manager=dlm3&amp;product=qprogrammer#tabs-4">QuartusPrimeLiteProgrammerSetup-17.1.0.590-linux</a>. This software uses about 500 MB of disk space.
 				<p><img alt="download screen for Quartus Lite" src="https://software.intel.com/sites/default/files/managed/b5/6a/Quartus%20Lite%20Download.png" title=""></p>
 			</li>
 		</ul>
@@ -122,7 +123,7 @@
 </ol>
 
 <p class="note"><strong>NOTE</strong>: You will finish setting up the card after you install Intel Distribution of OpenVINO toolkit.</p>
-<h2><a id="complete aria 10 gx" name="complete aria 10 gx"></a>3. Complete Intel® Arria® 10 FPGA Setup</h2>
+<h2><a id="complete aria 10 gx" name="complete aria 10 gx"></a>3. Complete Intel® Vision Accelerator Design with an Intel® Arria 10 FPGA Setup</h2>
 
 <p>For the Intel Vision Accelerator Design with Intel Arria 10 FPGA, download the <code>fpga_support_files</code> archive:</p>
 
