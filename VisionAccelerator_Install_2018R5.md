@@ -11,51 +11,64 @@
 </ul>
 
 <hr>
-<h2>1. Configure the Intel® Vision Accelerator Design with an Intel® Arria 10 FPGA<a id="configure aria 10 gx fpga" name="configure aria 10 gx fpga"></a></h2>
+<h2>1. Configure and Install the Intel® Vision Accelerator Design with an Intel® Arria 10 FPGA<a id="configure aria 10 gx fpga" name="configure aria 10 gx fpga"></a></h2>
 
-<p>To configure the Intel® Vision Accelerator Design with an Intel® Arria 10 FPGA, use the instruction in the <a href="https://www.intel.com/content/www/us/en/programmable/documentation/tgy1490191698959.html?_ga=2.246291212.90797072.1535473709-1926199859.1534783437">Configuring the Intel® Arria 10 GX FPGA Development Kit for the Intel FPGA SDK for OpenCL</a> guide. Stop after you configure and install the Intel Arria 10 GX FPGA Development Kit board. Do not follow the steps in the rest of the document. Instead, return to this document upon completing the specified section.</p>
+<li>Download <code>fpga_support_files.tgz</code> from the <a href="http://registrationcenter-download.intel.com/akdlm/irc_nas/12954/fpga_support_files.tgz">Intel Registration Center</a>. The files in this <code>.tgz</code> archive are required to ensure your FPGA card and the Intel Distribution of OpenVINO toolkit work correctly.</li>
+	<li>Go to the directory where you downloaded the <code>fpga_support_files.tgz</code> archive.</li>
+	<li>Unpack the <code>.tgz</code> file:
+		<pre class="brush:bash; class-name:dark;">tar -xvzf fpga_support_files.tgz</pre>
+		A directory named <code>fpga_support_files</code> is created.</li>
+	<li>Go to the <code>fpga_support_files</code> directory:
+		<pre class="brush:bash; class-name:dark;">cd fpga_support_files</pre>
+	</li>
+	<li>Copy <code>setup_env.sh</code> to your home directory:
+		<pre class="brush:bash; class-name:dark;">cp setup_env.sh /home/&lt;user&gt;</pre>
 
-<p><img alt="stop after initializing the Arria 10 card" src="https://software.intel.com/sites/default/files/managed/43/e6/initialize%20STOP%20copy.png" title="shows place to return to the install guide"></p>
+<pre class="brush:bash; class-name:dark;">source /home/&lt;user&gt;/setup_env.sh</pre>
+	
+<li>Configure the FPGA Driver Blacklist:
+		<pre class="brush:bash; class-name:dark;">sudo mv config/blacklist-altera-cvp.conf /etc/modprobe.d</pre>
+	</li>
 
-<h2>2. Program the Intel® Arria® 10 GX FPGA Development Kit<a id="program aria 10 gx" name="program aria 10 gx"></a></h2>
+<ol>
+	<li>Switch to superuser:
+		<pre class="brush:bash; class-name:dark;">sudo su</pre>
+	</li>
+	<li>Use the <code>setup_env.sh</code> script from <code>fpga_support_files.tgz</code> to set your environment variables:
+		<pre class="brush:bash; class-name:dark;">source /home/&lt;user&gt;/Downloads/fpga_support_files/setup_env.sh</pre>
+	</li>
+	<li>Change directory to <code>Downloads/fpga_support_files/</code>:
+		<pre class="brush:bash; class-name:dark;">cd /home/&lt;user&gt;/Downloads/fpga_support_files/</pre>
+	</li>
+	<li>Run the FPGA dependencies script, which allows OpenCL to support Ubuntu and recent kernels:
+		<pre class="brush:bash; class-name:dark;">./install_openvino_fpga_dependencies.sh</pre>
+
+<ul>
+			<li>When asked, select the FPGA card, Intel® GPU, and Movidius Neural Compute Stick, then you can install the correct dependencies.</li>
+			<li>If you installed the 4.14 kernel as part of the installation script, you will need to reboot the machine and select the new kernel in the Ubuntu (grub) boot menu. You will also need to rerun setup_env.sh to set up your environmental variables again.</li>
+		</ul>
+	</li>
+	<li>Install OpenCL devices. Enter <code>Y</code> when prompted to install:
+		<pre class="brush:bash; class-name:dark;">aocl install</pre>
+	</li>
+	<li>Reboot the machine:
+		<pre class="brush:bash; class-name:dark;">reboot</pre>
+	</li>
+	<li>Use the <code>setup_env.sh</code> script from <code>fpga_support_files.tgz</code> to set your environment variables:
+		<pre class="brush:bash; class-name:dark;">source /home/&lt;user&gt;/Downloads/fpga_support_files/setup_env.sh</pre>
+	</li>
+	<li>Run <code>aocl diagnose</code>:
+		<pre class="brush:bash; class-name:dark;">aocl diagnose</pre>
+		Your screen displays <code>DIAGNOSTIC_PASSED</code>.</li>
+</ol>
+
+
+
+<h2>2. Set Up the Intel® Vision Accelerator Design with Intel® Arria® 10 FPGA for R5<a id="program aria 10 gx" name="program aria 10 gx"></a></h2>
 
 <p class="note"><strong>NOTE</strong>: You need to do this only once, after you set up the FPGA board.</p>
 
 <ol>
-	<li>Use one of the following two links to download the Intel® Quartus® software, depending on the version you want:
-		<ul>
-			<li>If you have an Intel® Quartus® license, use  <a href="http://fpgasoftware.intel.com/17.1/?edition=pro&amp;platform=linux&amp;download_manager=dlm3&amp;product=qprogrammer#tabs-4">QuartusProProgrammerSetup-17.1.0.240-linux</a>. This software uses about 500 MB of disk space.
-
-<p><img alt="Quartus® Pro download screen" src="https://software.intel.com/sites/default/files/managed/7c/b9/Quartus%20Pro%20Download.png" title=""></p>
-			</li>
-			<li>If you do not have the license, use <a href="http://fpgasoftware.intel.com/17.1/?edition=lite&amp;platform=linux&amp;download_manager=dlm3&amp;product=qprogrammer#tabs-4">QuartusPrimeLiteProgrammerSetup-17.1.0.590-linux</a>. This software uses about 500 MB of disk space.
-				<p><img alt="download screen for Quartus Lite" src="https://software.intel.com/sites/default/files/managed/b5/6a/Quartus%20Lite%20Download.png" title=""></p>
-			</li>
-		</ul>
-	</li>
-	<li>Go to the <code>Downloads</code> directory or the directory to which you downloaded the Intel® Quartus® package. This document assumes the software is in the <code>Downloads</code> directory:
-		<pre class="brush:bash; class-name:dark;">cd ~/Downloads</pre>
-	</li>
-	<li>Use the command for the package you downloaded:
-		<ul>
-			<li><strong>Option 1: Intel® Quartus® Pro:</strong>
-				<pre class="brush:bash; class-name:dark;">sudo chmod +x QuartusProProgrammerSetup-17.1.0.240-linux.run</pre>
-			</li>
-			<li><strong>Option 2: Intel® Quartus® Lite:</strong>
-				<pre class="brush:bash; class-name:dark;">chmod +x QuartusProgrammerSetup-17.1.0.590-linux.run</pre>
-			</li>
-		</ul>
-	</li>
-	<li>Run the Intel® Quartus® Installer:
-		<pre class="brush:bash; class-name:dark;">sudo ./Quartus.&lt;version&gt;.run</pre>
-	</li>
-	<li>Click through the installer to the end. Remove the checkmarks from all boxes at the end of the installation.<br>
-		By default, the software is installed under <code>/home/user</code>. We suggest changing this directory to <code>/opt/altera</code> during the installation. A subdirectory is created with the name dependent on your version of Intel® Quartus®:
-		<ul>
-			<li>Intel® Quartus® Pro: <code>/opt/altera/intelFPGA_pro/17.1</code></li>
-			<li>Intel® Quartus® Lite: <code>/opt/altera/intelFPGA/17.1</code></li>
-		</ul>
-	</li>
 	<li>Download <code>fpga_support_files.tgz</code> from the <a href="http://registrationcenter-download.intel.com/akdlm/irc_nas/12954/fpga_support_files.tgz">Intel Registration Center</a>. The files in this <code>.tgz</code> archive are required to ensure your FPGA card and the Intel Distribution of OpenVINO toolkit work correctly.</li>
 	<li>Go to the directory where you downloaded the <code>fpga_support_files.tgz</code> archive.</li>
 	<li>Unpack the <code>.tgz</code> file:
@@ -123,58 +136,7 @@
 </ol>
 
 <p class="note"><strong>NOTE</strong>: You will finish setting up the card after you install Intel Distribution of OpenVINO toolkit.</p>
-<h2><a id="complete aria 10 gx" name="complete aria 10 gx"></a>3. Complete Intel® Vision Accelerator Design with an Intel® Arria 10 FPGA Setup</h2>
 
-<p>For the Intel Vision Accelerator Design with Intel Arria 10 FPGA, download the <code>fpga_support_files</code> archive:</p>
-
-<ol>
-	<li>Download <code>fpga_support_files.tgz</code> from <a href="http://registrationcenter-download.intel.com/akdlm/irc_nas/12954/fpga_support_files.tgz">the Intel Registration Center.</a> The files in this <code>.tgz</code> are required to ensure your FPGA card and Intel Distribution of OpenVINO toolkit work correctly. Right click or save the file instead of letting your browser extract automatically.</li>
-	<li>Go to the directory where you downloaded <code>fpga_support_files.tgz</code>.</li>
-	<li>Unpack the <code>.tgz</code> file:
-		<pre class="brush:bash; class-name:dark;">tar -xvzf fpga_support_files.tgz</pre>
-		A directory named <code>fpga_support_files</code> is created.</li>
-	<li>Go to the <code>fpga_support_files</code> directory:
-		<pre class="brush:bash; class-name:dark;">cd fpga_support_files</pre>
-	</li>
-</ol>
-
-<p class="note"><strong>NOTE</strong>: These steps are for both Intel Arria 10 FPGA cards.</p>
-
-<ol>
-	<li>Switch to superuser:
-		<pre class="brush:bash; class-name:dark;">sudo su</pre>
-	</li>
-	<li>Use the <code>setup_env.sh</code> script from <code>fpga_support_files.tgz</code> to set your environment variables:
-		<pre class="brush:bash; class-name:dark;">source /home/&lt;user&gt;/Downloads/fpga_support_files/setup_env.sh</pre>
-	</li>
-	<li>Change directory to <code>Downloads/fpga_support_files/</code>:
-		<pre class="brush:bash; class-name:dark;">cd /home/&lt;user&gt;/Downloads/fpga_support_files/</pre>
-	</li>
-	<li>Run the FPGA dependencies script, which allows OpenCL to support Ubuntu and recent kernels:
-		<pre class="brush:bash; class-name:dark;">./install_openvino_fpga_dependencies.sh</pre>
-
-<ul>
-			<li>When asked, select the FPGA card, Intel® GPU, and Movidius Neural Compute Stick, then you can install the correct dependencies.</li>
-			<li>If you installed the 4.14 kernel, you will need to reboot the machine and select the new kernel in the Ubuntu (grub) boot menu. You will also need to redo steps 1 and 2 to set up your environmental variables again.</li>
-		</ul>
-	</li>
-	<li>Install OpenCL devices. Enter <code>Y</code> when prompted to install:
-		<pre class="brush:bash; class-name:dark;">aocl install</pre>
-	</li>
-	<li>Reboot the machine:
-		<pre class="brush:bash; class-name:dark;">reboot</pre>
-	</li>
-	<li>Use the <code>setup_env.sh</code> script from <code>fpga_support_files.tgz</code> to set your environment variables:
-		<pre class="brush:bash; class-name:dark;">source /home/&lt;user&gt;/Downloads/fpga_support_files/setup_env.sh</pre>
-	</li>
-	<li>Run <code>aocl diagnose</code>:
-		<pre class="brush:bash; class-name:dark;">aocl diagnose</pre>
-		Your screen displays <code>DIAGNOSTIC_PASSED</code>.</li>
-</ol>
-
-<p>For the Intel Distribution of OpenVINO toolkit R5 with Intel® Vision Acceleration Design with Intel® Arria® 10 FPGA, continue to the <a href="#set-up-vision-accelerator-design-r5">next section</a> to program the board before running the samples and programming bitstreams. </p>
-
-<p>Otherwise, you completed the FPGA installation and configuration.</p>
 <h2><a id="set-up-vision-accelerator-design-r5" name="set-up-vision-accelerator-design-r5"></a>4. Set Up the Intel® Vision Accelerator Design with Intel® Arria® 10 FPGA for R5</h2>
 
 <p>For the R5 release, the Intel® Distribution of OpenVINO™ toolkit introduced a new board support package (BSP) <code>a10_1150_sg1</code> for the Intel® Vision Accelerator Design with an Intel® Arria 10 FPGA, which is included into the <code>fpga_support_files.tgz</code> archive. To program the bitstreams for the Intel Distribution of OpenVINO toolkit R5, you need to program the BSP into the board using the USB blaster:</p>
