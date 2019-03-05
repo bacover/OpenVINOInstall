@@ -94,6 +94,9 @@ find a10_1150_sg1 -type f -print0 | xargs -0 dos2unix	</pre>
 
 </li>
 			<li>From point F end of the cable to point F on the FPGA download cable, the connection is as shown:
+![alt text](https://github.com/bacover/OpenVINOInstall/blob/master/VisionAcceleratorJTAG.png)
+
+<img src="https://github.com/bacover/OpenVINOInstall/blob/master/VisionAcceleratorJTAG.png">
 
 </li>
 		</ol>
