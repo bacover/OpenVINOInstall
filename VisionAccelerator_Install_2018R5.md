@@ -1,4 +1,4 @@
-<p class="note"><strong>NOTE</strong>: This installation guide is written for the Intel® Arria® 10 GX FPGA Development Kit on Linux.</p>
+<p class="note"><strong>NOTE</strong>: This installation guide is written for the Intel® Arria® 10 GX FPGA Development Kit on Linux (Ubuntu/CentOS).</p>
 
 <p>Installation Notes:</p>
 
