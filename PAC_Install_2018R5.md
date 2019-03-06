@@ -2,7 +2,7 @@
 
 <hr>
 
-Install OpenVINO Release 5 for PAC
+Install OpenVINO 2018 Release 5 for PAC
 
 # Getting Started
 
