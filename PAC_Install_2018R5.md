@@ -136,18 +136,18 @@ Run the Hello World application:
 
 To run OpenVINO, add the last 4 commands to the ~/init_openvino.sh script.  The previous content is shown as well.
 
-<code>source \$HOME/tools/intelrtestack/init_env.sh</code>
-<code>export CL_CONTEXT_COMPILER_MODE_ALTERA=3</code>
-<code>export CL_CONTEXT_COMPILER_MODE_INTELFPGA=3</code>
-<code>export INTELFPGAOCLSDKROOT="\$HOME/tools/intelrtestack/intelFPGA_pro/aclrte-linux64"</code>
-<code>export ALTERAOCLSDKROOT="\$INTELFPGAOCLSDKROOT"</code>
-<code>export AOCL_BOARD_PACKAGE_ROOT="\$OPAE_PLATFORM_ROOT/opencl/opencl_bsp"</code>
-<code>\$AOCL_BOARD_PACKAGE_ROOT/linux64/libexec/setup_permissions.sh</code>
-<code>source $INTELFPGAOCLSDKROOT/init_opencl.sh</code>
-<code>export IE_INSTALL="/opt/intel/computer_vision_sdk/deployment_tools"</code>
-<code>source \$IE_INSTALL/../bin/setupvars.sh</code>
-<code>export PATH="\$PATH:\$HOME/inference_engine_samples/intel64/Release"</code>
-<code>alias mo="python3.6 \$IE_INSTALL/model_optimizer/mo.py"</code>
+<code>source \$HOME/tools/intelrtestack/init_env.sh</code><br>
+<code>export CL_CONTEXT_COMPILER_MODE_ALTERA=3</code><br>
+<code>export CL_CONTEXT_COMPILER_MODE_INTELFPGA=3</code><br>
+<code>export INTELFPGAOCLSDKROOT="\$HOME/tools/intelrtestack/intelFPGA_pro/aclrte-linux64"</code><br>
+<code>export ALTERAOCLSDKROOT="\$INTELFPGAOCLSDKROOT"</code><br>
+<code>export AOCL_BOARD_PACKAGE_ROOT="\$OPAE_PLATFORM_ROOT/opencl/opencl_bsp"</code><br>
+<code>\$AOCL_BOARD_PACKAGE_ROOT/linux64/libexec/setup_permissions.sh</code><br>
+<code>source $INTELFPGAOCLSDKROOT/init_opencl.sh</code><br>
+<code>export IE_INSTALL="/opt/intel/computer_vision_sdk/deployment_tools"</code><br>
+<code>source \$IE_INSTALL/../bin/setupvars.sh</code><br>
+<code>export PATH="\$PATH:\$HOME/inference_engine_samples/intel64/Release"</code><br>
+<code>alias mo="python3.6 \$IE_INSTALL/model_optimizer/mo.py"</code><br>
 
 Source the script
 
@@ -191,35 +191,23 @@ Installation starts from CentOS-7-x86_64-Everything-1708.iso image. Image is dow
 
 or: [http://ftp.hosteurope.de/mirror/centos.org/7/isos/x86_64/CentOS-7-x86_64-Everything-1708.iso](http://ftp.hosteurope.de/mirror/centos.org/7/isos/x86_64/CentOS-7-x86_64-Everything-1708.iso%20)
 
+<br>
 Selections:
 
 Language: as required
-
 Timezone: as required
-
 Time/Date
-
 Add additional keyboard layouts as needed (the top one in the list is the default then)
-
 Installation source: local media
-
 Software Selection:
-
-Base Environment: Development and Creative Workstation
-
-Add-Ons for Selected Environment:
-
-Additional Development
-
-Compatibility Libraries
-
-Development Tools
-
-Platform Development
-
-Python
-
-Virtualization Hyperviser
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Base Environment: Development and Creative Workstation
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add-Ons for Selected Environment:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Additional Development
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Compatibility Libraries
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Development Tools
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Platform Development
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Python
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Virtualization Hyperviser
 
 Installation Destination:
 
