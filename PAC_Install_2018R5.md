@@ -84,15 +84,14 @@ Extract the BSP
 
 Create an initialization script ~/init_openvino.sh with the following content that can be run upon opening a new terminal or rebooting.  This will source the script ran above as well as setting up the OpenCL environment.
 
-<code>source \$HOME/tools/intelrtestack/init_env.sh
-<code>export CL_CONTEXT_COMPILER_MODE_ALTERA=3
-<code>export CL_CONTEXT_COMPILER_MODE_INTELFPGA=3
-<code>export INTELFPGAOCLSDKROOT="\$HOME/tools/intelrtestack/intelFPGA_pro/aclrte-linux64"
-<code>export ALTERAOCLSDKROOT="\$INTELFPGAOCLSDKROOT"
-<code>export AOCL_BOARD_PACKAGE_ROOT="\$OPAE_PLATFORM_ROOT/opencl/opencl_bsp"
-<code>\$AOCL_BOARD_PACKAGE_ROOT/linux64/libexec/setup_permissions.sh
-<code>source $INTELFPGAOCLSDKROOT/init_opencl.sh
-</code>
+<code>source \$HOME/tools/intelrtestack/init_env.sh</code>
+<code>export CL_CONTEXT_COMPILER_MODE_ALTERA=3</code>
+<code>export CL_CONTEXT_COMPILER_MODE_INTELFPGA=3</code>
+<code>export INTELFPGAOCLSDKROOT="\$HOME/tools/intelrtestack/intelFPGA_pro/aclrte-linux64"</code>
+<code>export ALTERAOCLSDKROOT="\$INTELFPGAOCLSDKROOT"</code>
+<code>export AOCL_BOARD_PACKAGE_ROOT="\$OPAE_PLATFORM_ROOT/opencl/opencl_bsp"</code>
+<code>\$AOCL_BOARD_PACKAGE_ROOT/linux64/libexec/setup_permissions.sh</code>
+<code>source $INTELFPGAOCLSDKROOT/init_opencl.sh</code>
 
 Source the script:
 
@@ -120,37 +119,35 @@ Program the PAC board with a pre-compiled aocx file (OpenCL based FPGA bitstream
 
 Run the Hello World application:
 
-<code>sudo tar xf exm_opencl_hello_world_x64_linux.tgz
+<code>sudo tar xf exm_opencl_hello_world_x64_linux.tgz</code>
 
-<code>sudo chmod -R a+w hello_world
+<code>sudo chmod -R a+w hello_world</code>
 
-<code>cd hello_world
+<code>cd hello_world</code>
 
-<code>make
+<code>make</code>
 
-<code>cp ../hello_world.aocx ./bin
+<code>cp ../hello_world.aocx ./bin</code>
 
-<code>./bin/host
+<code>./bin/host</code>
 
 # Adding OpenVINO with FPGA Support to Environment Variables
 
 
 To run OpenVINO, add the last 4 commands to the ~/init_openvino.sh script.  The previous content is shown as well.
 
-<code>source \$HOME/tools/intelrtestack/init_env.sh
-<code>export CL_CONTEXT_COMPILER_MODE_ALTERA=3
-<code>export CL_CONTEXT_COMPILER_MODE_INTELFPGA=3
-<code>export INTELFPGAOCLSDKROOT="\$HOME/tools/intelrtestack/intelFPGA_pro/aclrte-linux64"
-<code>export ALTERAOCLSDKROOT="\$INTELFPGAOCLSDKROOT"
-<code>export AOCL_BOARD_PACKAGE_ROOT="\$OPAE_PLATFORM_ROOT/opencl/opencl_bsp"
-<code>\$AOCL_BOARD_PACKAGE_ROOT/linux64/libexec/setup_permissions.sh
-<code>source $INTELFPGAOCLSDKROOT/init_opencl.sh
-<code>export IE_INSTALL="/opt/intel/computer_vision_sdk/deployment_tools"
-<code>source \$IE_INSTALL/../bin/setupvars.sh
-<code>export PATH="\$PATH:\$HOME/inference_engine_samples/intel64/Release"
-<code>alias mo="python3.6 \$IE_INSTALL/model_optimizer/mo.py"
-
-</code>
+<code>source \$HOME/tools/intelrtestack/init_env.sh</code>
+<code>export CL_CONTEXT_COMPILER_MODE_ALTERA=3</code>
+<code>export CL_CONTEXT_COMPILER_MODE_INTELFPGA=3</code>
+<code>export INTELFPGAOCLSDKROOT="\$HOME/tools/intelrtestack/intelFPGA_pro/aclrte-linux64"</code>
+<code>export ALTERAOCLSDKROOT="\$INTELFPGAOCLSDKROOT"</code>
+<code>export AOCL_BOARD_PACKAGE_ROOT="\$OPAE_PLATFORM_ROOT/opencl/opencl_bsp"</code>
+<code>\$AOCL_BOARD_PACKAGE_ROOT/linux64/libexec/setup_permissions.sh</code>
+<code>source $INTELFPGAOCLSDKROOT/init_opencl.sh</code>
+<code>export IE_INSTALL="/opt/intel/computer_vision_sdk/deployment_tools"</code>
+<code>source \$IE_INSTALL/../bin/setupvars.sh</code>
+<code>export PATH="\$PATH:\$HOME/inference_engine_samples/intel64/Release"</code>
+<code>alias mo="python3.6 \$IE_INSTALL/model_optimizer/mo.py"</code>
 
 Source the script
 
