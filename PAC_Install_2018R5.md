@@ -17,11 +17,9 @@ The following describes the set-up of Intel® OpenVINO™ Tool Kit on Centos 7.4
 For details about installing CentOS 7.4, please see the associated section in Appendix A.
 
 Optional: Install NTFS support for transferring large installers if already downloaded on another machine.
+<code>sudo yum -y install epel-release</code>
 
-sudo yum -y install epel-release
-
-sudo yum -y install ntfs-3g
-
+<code>sudo yum -y install ntfs-3g</code>
 # Install PAC & Acceleration Stack
 
 Download version 1.1 of the Acceleration Stack for Runtime from here:
@@ -42,64 +40,58 @@ cd a10_gx_pac_ias_1_1_pv_rte_installer
 
 sudo ./setup.sh
 
-Select Y to install OPAE and accept license and when asked, specify /home/<username>/tools/intelrtestack  as the install path.  During the installation there should be a message stating the directory already exists as it was created in the first command above.  Select Y to install to this directory.  If this message is not seen, it suggests that there was a typo when entering the install location.
+Select Y to install OPAE and accept license and when asked, specify <code>/home/[username]/tools/intelrtestack  </code>as the install path.  During the installation there should be a message stating the directory already exists as it was created in the first command above.  Select Y to install to this directory.  If this message is not seen, it suggests that there was a typo when entering the install location.
 
 Tools will be installed to the following directories:
 
-Quartus Programmer
+Quartus Programmer: ~/tools/inteltrestack/intelFPGA_pro/qprogrammer
 
-~/tools/inteltrestack/intelFPGA_pro/qprogrammer
+OpenCL Run Time Environment: ~/tools/intelrtestack/intelFPGA_pro/aclrte-linux64
 
-OpenCL Run Time Environment
-
-~/tools/intelrtestack/intelFPGA_pro/aclrte-linux64
-
-Intel FPGA Acceleration Stack
-
-~/tools/intelrtestack/a10_gx_pac_ias_1_1_pv
+Intel FPGA Acceleration Stack: ~/tools/intelrtestack/a10_gx_pac_ias_1_1_pv
 
   
 
 Install E10/E40 Software Patch
 
-source ~/tools/intelrtestack/init_env.sh
+<code>source ~/tools/intelrtestack/init_env.sh</code>
 
-cd $OPAE_PLATFORM_ROOT/hw
+<code>cd $OPAE_PLATFORM_ROOT/hw</code>
 
-sudo wget [https://www.intel.com/content/dam/altera-www/global/en_US/others/solutions/acceleration-hub/a10_gx_pac_ias_1_1_pv_eth.patch](https://www.intel.com/content/dam/altera-www/global/en_US/others/solutions/acceleration-hub/a10_gx_pac_ias_1_1_pv_eth.patch)
+<code>sudo wget [https://www.intel.com/content/dam/altera-www/global/en_US/others/solutions/acceleration-hub/a10_gx_pac_ias_1_1_pv_eth.patch](https://www.intel.com/content/dam/altera-www/global/en_US/others/solutions/acceleration-hub/a10_gx_pac_ias_1_1_pv_eth.patch)</code>
 
-sudo patch -s -p0 < a10_gx_pac_ias_1_1_pv_eth.patch
+<code>sudo patch -s -p0 < a10_gx_pac_ias_1_1_pv_eth.patch</code>
 
 Check the version of the FPGA Interface Manager firmware on the PAC board.
 
-sudo fpgainfo fme
+<code>sudo fpgainfo fme</code>
 
-If the reported _Pr Interface Id_ is not 9926ab6d-6c92-5a68-aabc-a7d84c545738 then follow the instructions in section 4 of the [Intel Acceleration Stack Quick Start Guide](https://www.intel.com/content/dam/altera-www/global/en_US/pdfs/literature/ug/ug-qs-ias-v1-1.pdf) to update the FME.
+If the reported _Pr Interface Id_ is not <code>9926ab6d-6c92-5a68-aabc-a7d84c545738</code> then follow the instructions in section 4 of the [Intel Acceleration Stack Quick Start Guide](https://www.intel.com/content/dam/altera-www/global/en_US/pdfs/literature/ug/ug-qs-ias-v1-1.pdf) to update the FME.
 
 Run the built in self-test to verify operation of the Acceleration Stack and PAC in a non-virtualized environment.
 
-sudo sh -c "echo 20 > /sys/kernel/mm/hugepages/hugepages-2048kB/nr_hugepages"
+<code>sudo sh -c "echo 20 > /sys/kernel/mm/hugepages/hugepages-2048kB/nr_hugepages"
 
-sudo fpgabist $OPAE_PLATFORM_ROOT/hw/samples/nlb_mode_3/bin/nlb_mode_3.gbs
+<code>sudo fpgabist $OPAE_PLATFORM_ROOT/hw/samples/nlb_mode_3/bin/nlb_mode_3.gbs
 
 ## Extract and Verify the Acceleration Stack OpenCL BSP
 
 Extract the BSP
 
-cd $OPAE_PLATFORM_ROOT/opencl
+<code>cd $OPAE_PLATFORM_ROOT/opencl
 
-sudo tar xf opencl_bsp.tar.gz
+<code>sudo tar xf opencl_bsp.tar.gz
 
 Create an initialization script ~/init_openvino.sh with the following content that can be run upon opening a new terminal or rebooting.  This will source the script ran above as well as setting up the OpenCL environment.
 
 <code>source $HOME/tools/intelrtestack/init_env.sh
-export CL_CONTEXT_COMPILER_MODE_ALTERA=3
-export CL_CONTEXT_COMPILER_MODE_INTELFPGA=3
-export INTELFPGAOCLSDKROOT="$HOME/tools/intelrtestack/intelFPGA_pro/aclrte-linux64"
-export ALTERAOCLSDKROOT="$INTELFPGAOCLSDKROOT"
-export AOCL_BOARD_PACKAGE_ROOT="$OPAE_PLATFORM_ROOT/opencl/opencl_bsp"
-$AOCL_BOARD_PACKAGE_ROOT/linux64/libexec/setup_permissions.sh
-source $INTELFPGAOCLSDKROOT/init_opencl.sh
+<code>export CL_CONTEXT_COMPILER_MODE_ALTERA=3
+code>export CL_CONTEXT_COMPILER_MODE_INTELFPGA=3
+code>export INTELFPGAOCLSDKROOT="$HOME/tools/intelrtestack/intelFPGA_pro/aclrte-linux64"
+code>export ALTERAOCLSDKROOT="$INTELFPGAOCLSDKROOT"
+code>export AOCL_BOARD_PACKAGE_ROOT="$OPAE_PLATFORM_ROOT/opencl/opencl_bsp"
+code>$AOCL_BOARD_PACKAGE_ROOT/linux64/libexec/setup_permissions.sh
+code>source $INTELFPGAOCLSDKROOT/init_opencl.sh
 </code>
 
 Source the script:
