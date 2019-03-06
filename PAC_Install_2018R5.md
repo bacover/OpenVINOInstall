@@ -92,7 +92,7 @@ sudo tar xf opencl_bsp.tar.gz
 
 Create an initialization script ~/init_openvino.sh with the following content that can be run upon opening a new terminal or rebooting.  This will source the script ran above as well as setting up the OpenCL environment.
 
-<![if !vml]>![Text Box: source $HOME/tools/intelrtestack/init_env.sh
+<code>source $HOME/tools/intelrtestack/init_env.sh
 export CL_CONTEXT_COMPILER_MODE_ALTERA=3
 export CL_CONTEXT_COMPILER_MODE_INTELFPGA=3
 export INTELFPGAOCLSDKROOT="$HOME/tools/intelrtestack/intelFPGA_pro/aclrte-linux64"
@@ -100,7 +100,7 @@ export ALTERAOCLSDKROOT="$INTELFPGAOCLSDKROOT"
 export AOCL_BOARD_PACKAGE_ROOT="$OPAE_PLATFORM_ROOT/opencl/opencl_bsp"
 $AOCL_BOARD_PACKAGE_ROOT/linux64/libexec/setup_permissions.sh
 source $INTELFPGAOCLSDKROOT/init_opencl.sh
-](file:///C:/Users/bcover/AppData/Local/Temp/msohtmlclip1/01/clip_image001.png)<![endif]>
+</code>
 
 Source the script:
 
