@@ -1,5 +1,6 @@
+<p class="note"><strong>NOTE</strong>: This installation guide is written for the Intel® Programmable Acceleration Card with Intel Arria® 10 GX FPGA on CentOS.</p>
 
-<![endif]-->
+<hr>
 
 Install OpenVINO Release 5 for PAC
 
