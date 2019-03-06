@@ -70,9 +70,9 @@ If the reported _Pr Interface Id_ is not <code>9926ab6d-6c92-5a68-aabc-a7d84c545
 
 Run the built in self-test to verify operation of the Acceleration Stack and PAC in a non-virtualized environment.
 
-<code>sudo sh -c "echo 20 > /sys/kernel/mm/hugepages/hugepages-2048kB/nr_hugepages"
+<code>sudo sh -c "echo 20 > /sys/kernel/mm/hugepages/hugepages-2048kB/nr_hugepages"</code>
 
-<code>sudo fpgabist $OPAE_PLATFORM_ROOT/hw/samples/nlb_mode_3/bin/nlb_mode_3.gbs
+<code>sudo fpgabist $OPAE_PLATFORM_ROOT/hw/samples/nlb_mode_3/bin/nlb_mode_3.gbs</code>
 
 ## Extract and Verify the Acceleration Stack OpenCL BSP
 
