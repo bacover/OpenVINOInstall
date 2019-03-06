@@ -7,7 +7,7 @@
 	<li>For a first-time installation, use all steps.</li>
 	<li>Use steps 1 and 2 only after receiving a new FPGA card.</li>
 	<li>Repeat steps 2-5 when installing a new version of the Intel Distribution of OpenVINO toolkit.</li>
-	<li>Use step 3-5 when a Neural Network topology used by an Intel Distribution of OpenVINO application changes.</li>
+	<li>Use steps 3-5 when a Neural Network topology used by an Intel Distribution of OpenVINO application changes.</li>
 </ul>
 
 <hr>
