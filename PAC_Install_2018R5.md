@@ -84,14 +84,14 @@ Extract the BSP
 
 Create an initialization script ~/init_openvino.sh with the following content that can be run upon opening a new terminal or rebooting.  This will source the script ran above as well as setting up the OpenCL environment.
 
-<code>source \$HOME/tools/intelrtestack/init_env.sh</code>
-<code>export CL_CONTEXT_COMPILER_MODE_ALTERA=3</code>
-<code>export CL_CONTEXT_COMPILER_MODE_INTELFPGA=3</code>
-<code>export INTELFPGAOCLSDKROOT="\$HOME/tools/intelrtestack/intelFPGA_pro/aclrte-linux64"</code>
-<code>export ALTERAOCLSDKROOT="\$INTELFPGAOCLSDKROOT"</code>
-<code>export AOCL_BOARD_PACKAGE_ROOT="\$OPAE_PLATFORM_ROOT/opencl/opencl_bsp"</code>
-<code>\$AOCL_BOARD_PACKAGE_ROOT/linux64/libexec/setup_permissions.sh</code>
-<code>source $INTELFPGAOCLSDKROOT/init_opencl.sh</code>
+<code>source \$HOME/tools/intelrtestack/init_env.sh</code><br>
+<code>export CL_CONTEXT_COMPILER_MODE_ALTERA=3</code><br>
+<code>export CL_CONTEXT_COMPILER_MODE_INTELFPGA=3</code><br>
+<code>export INTELFPGAOCLSDKROOT="\$HOME/tools/intelrtestack/intelFPGA_pro/aclrte-linux64"</code><br>
+<code>export ALTERAOCLSDKROOT="\$INTELFPGAOCLSDKROOT"</code><br>
+<code>export AOCL_BOARD_PACKAGE_ROOT="\$OPAE_PLATFORM_ROOT/opencl/opencl_bsp"</code><br>
+<code>\$AOCL_BOARD_PACKAGE_ROOT/linux64/libexec/setup_permissions.sh</code><br>
+<code>source $INTELFPGAOCLSDKROOT/init_opencl.sh</code><br>
 
 Source the script:
 
@@ -155,31 +155,31 @@ Source the script
 
 ## Using OpenVINO
 
-Run inference with OpenVINO independent of the scripts above using the SqueezeNet model that was download by the scripts.  For convenience we will copy the necessary files to a local directory.  If the workstation has been rebooted or a new terminal is opened, source the script above first.
+Run inference with OpenVINO independent of the demo scripts using the SqueezeNet model that was download by the scripts.  For convenience we will copy the necessary files to a local directory.  If the workstation has been rebooted or a new terminal is opened, source the script above first.
 
-mkdir ~/openvino_test
+<code>mkdir ~/openvino_test</code>
 
-cd ~/openvino_test
+<code>cd ~/openvino_test</code>
 
-cp ~/openvino_models/classification/squeezenet/1.1/caffe/squeezenet1.1.* .
+<code>cp ~/openvino_models/classification/squeezenet/1.1/caffe/squeezenet1.1.* .</code>
 
-cp ~/openvino_models/ir/squeezenet1.1/squeezenet1.1.labels .
+<code>cp ~/openvino_models/ir/squeezenet1.1/squeezenet1.1.labels .</code>
 
 Note that the squeezenet1.1.labels file contains the classes used by ImageNet and is included here so that the inference results show text rather than classification numbers.  Convert the model with the Model Optimizer.  Note that the command below uses the alias defined in the script above and is not referred to in other documentation.
 
-mo --input_model squeezenet1.1.caffemodel
+<code>mo --input_model squeezenet1.1.caffemodel</code>
 
 Now run Inference on the CPU using one of the built in Inference Engine samples:
 
-classification_sample -m squeezenet1.1.xml -i $IE_INSTALL/demo/car.png
+<code>classification_sample -m squeezenet1.1.xml -i $IE_INSTALL/demo/car.png</code>
 
 Add the -d option to run on FPGA:
 
-classification_sample -m squeezenet1.1.xml -i $IE_INSTALL/demo/car.png -d HETERO:FPGA,CPU
+<code>classification_sample -m squeezenet1.1.xml -i $IE_INSTALL/demo/car.png -d HETERO:FPGA,CPU</code>
 
 Increase the number of iterations with the -ni option to reduce the impact of initialization:
 
-classification_sample -m squeezenet1.1.xml -i $IE_INSTALL/demo/car.png -d HETERO:FPGA,CPU -ni 100
+<code>classification_sample -m squeezenet1.1.xml -i $IE_INSTALL/demo/car.png -d HETERO:FPGA,CPU -ni 100</code>
 
 # Appendix A – Installing CentOS 7.4
 
