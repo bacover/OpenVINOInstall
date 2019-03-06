@@ -1,4 +1,4 @@
-<p class="note"><strong>NOTE</strong>: This installation guide is written for the Intel® Arria® 10 GX FPGA Development Kit on Linux.</p>
+<p class="note"><strong>NOTE</strong>: This installation guide is written for the Intel® Arria® 10 GX FPGA Development Kit on Linux (Ubuntu/CentOS).</p>
 
 <p>Installation Notes:</p>
 
@@ -6,7 +6,7 @@
 	<li>For a first-time installation, use all steps.</li>
 	<li>Use steps 1 and 2 only after receiving a new FPGA card.</li>
 	<li>Repeat steps 3-6 when installing a new version of the Intel Distribution of OpenVINO toolkit.</li>
-	<li>Use step 7 when a Neural Network topology used by an Intel Distribution of OpenVINO application changes.</li>
+	<li>Use steps 4-6 when a Neural Network topology used by an Intel Distribution of OpenVINO application changes.</li>
 </ul>
 
 <hr>
@@ -23,11 +23,11 @@
 <ol>
 	<li>Use one of the following two links to download the Intel® Quartus® software, depending on the version you want:
 		<ul>
-			<li>If you have an Intel® Quartus® license, use  <a href="http://fpgasoftware.intel.com/17.1/?edition=pro&amp;platform=linux&amp;download_manager=dlm3&amp;product=qprogrammer#tabs-4">QuartusProProgrammerSetup-17.1.0.240-linux</a>. This software uses about 35 GB of disk space.
+			<li>If you have an Intel® Quartus® license, use  <a href="http://fpgasoftware.intel.com/17.1/?edition=pro&amp;platform=linux&amp;download_manager=dlm3&amp;product=qprogrammer#tabs-4">QuartusProProgrammerSetup-17.1.0.240-linux</a>. This software uses about 500 MB of disk space.
 
 <p><img alt="Quartus® Pro download screen" src="https://software.intel.com/sites/default/files/managed/7c/b9/Quartus%20Pro%20Download.png" title=""></p>
 			</li>
-			<li>If you do not have the license, use <a href="http://fpgasoftware.intel.com/17.1/?edition=lite&amp;platform=linux&amp;download_manager=dlm3&amp;product=qprogrammer#tabs-4">QuartusPrimeLiteProgrammerSetup-17.1.0.590-linux</a>. This software uses about 1.4 GB of disk space.
+			<li>If you do not have the license, use <a href="http://fpgasoftware.intel.com/17.1/?edition=lite&amp;platform=linux&amp;download_manager=dlm3&amp;product=qprogrammer#tabs-4">QuartusPrimeLiteProgrammerSetup-17.1.0.590-linux</a>. This software uses about 500 MB of disk space.
 				<p><img alt="download screen for Quartus Lite" src="https://software.intel.com/sites/default/files/managed/b5/6a/Quartus%20Lite%20Download.png" title=""></p>
 			</li>
 		</ul>
@@ -124,7 +124,6 @@
 <p class="note"><strong>NOTE</strong>: You will finish setting up the card after you install Intel Distribution of OpenVINO toolkit.</p>
 <h2><a id="complete aria 10 gx" name="complete aria 10 gx"></a>3. Complete Intel® Arria® 10 FPGA Setup</h2>
 
-<p>For the Intel Vision Accelerator Design with Intel Arria 10 FPGA, download the <code>fpga_support_files</code> archive:</p>
 
 <ol>
 	<li>Download <code>fpga_support_files.tgz</code> from <a href="http://registrationcenter-download.intel.com/akdlm/irc_nas/12954/fpga_support_files.tgz">the Intel Registration Center.</a> The files in this <code>.tgz</code> are required to ensure your FPGA card and Intel Distribution of OpenVINO toolkit work correctly. Right click or save the file instead of letting your browser extract automatically.</li>
@@ -171,118 +170,7 @@
 		Your screen displays <code>DIAGNOSTIC_PASSED</code>.</li>
 </ol>
 
-<p>For the Intel Distribution of OpenVINO toolkit R5 with Intel® Vision Acceleration Design with Intel® Arria® 10 FPGA, continue to the <a href="#set-up-vision-accelerator-design-r5">next section</a> to program the board before running the samples and programming bitstreams. </p>
-
-<p>Otherwise, you completed the FPGA installation and configuration.</p>
-<h2><a id="set-up-vision-accelerator-design-r5" name="set-up-vision-accelerator-design-r5"></a>4. Set Up the Intel® Vision Accelerator Design with Intel® Arria® 10 FPGA for R5</h2>
-
-<p>For the R5 release, the Intel® Distribution of OpenVINO™ toolkit introduced a new board support package (BSP) <code>a10_1150_sg1</code> for the Intel® Vision Accelerator Design with an Intel® Arria 10 FPGA, which is included into the <code>fpga_support_files.tgz</code> archive. To program the bitstreams for the Intel Distribution of OpenVINO toolkit R5, you need to program the BSP into the board using the USB blaster:</p>
-
-<p class="note"><strong>NOTE</strong>: These steps apply only if you update to the Intel Distribution of OpenVINO toolkit R5. Otherwise, skip them to the <a href="#run the demos">Run the Demos to Verify Installation and Compile Samples</a>.</p>
-
-<ol>
-	<li>Go to the <code> config</code> folder of the <code>fpga_support_files</code> directory where the a10_1150_sg1 is located:
-
-		<pre class="brush:bash; class-name:dark;">cd /home/&lt;user&gt;/Downloads/fpga_support_files/config/
-</pre>
-	</li>
-	<li>Copy the <code>a10_1150_sg1</code> folder to the <code>board</code> directory:
-		<pre class="brush:bash; class-name:dark;">sudo cp -rf a10_1150_sg1 /opt/altera/aocl-pro-rte/aclrte-linux64/board/
-</pre>
-	</li>
-	<li>Convert the BSP files from DOS to UNIX:
-		<pre class="brush:bash; class-name:dark;">sudo chmod +x a10_1150_sg1
-find a10_1150_sg1 -type f -print0 | xargs -0 dos2unix	</pre>
-	</li>
-	<li>Set up the USB Blaster:
-		<ol>
-			<li>Connect the cable between the board and the host system. Use the letter codes in the diagram below for the connection points:
-				<ul>
-					<li>Connect the B end of the cable to point B on the board.</li>
-					<li>Connect the F end of the cable to point F on the FPGA download cable.</li>
-				</ul>
-
-
-</li>
-			<li>From point F end of the cable to point F on the FPGA download cable, the connection is as shown:
-
-</li>
-		</ol>
-	</li>
-	<li>Source the <code>setup_env.sh</code> script from the <code>fpga_support_files</code> to set up the environment variables:
-		<pre class="brush:bash; class-name:dark;">source /home/&lt;user&gt;/Downloads/fpga_support_files/setup_env.sh
-</pre>
-	</li>
-	<li>Update the Intel FPGA Download Cable rules to program the board without root permissions and to flash the initialization bitstreams so that the Intel FPGA Download Cable can communicate with the board: 
-		<pre class="brush:bash; class-name:dark;">sudo cp config/51-usbblaster.rules /etc/udev/rules.d
-</pre>
-	</li>
-	<li>Load the USB rules:
-		<pre class="brush:bash; class-name:dark;">sudo udevadm control --reload-rules &amp;&amp; udevadm trigger
-</pre>
-	</li>
-	<li>Unplug and re-plug the Intel® FPGA Download Cable to enable JTAG connection.</li>
-	<li>Run <code>jtagconfig</code> to ensure that your Intel FPFA Download Cable driver is ready to use:
-		<pre class="brush:bash; class-name:dark;">jtagconfig
-</pre>
-
-<p>Your output is similar to:</p>
-
-<pre class="brush:bash; class-name:dark;">1) USB-Blaster [1-6]
-02E660DD   10AX115H1(.|E2|ES)/10AX115H2/.. 
-</pre>
-</li>
-	<li>Download <a href="http://fpgasoftware.intel.com/17.1/?edition=lite">Quartus Prime Lite Edition 17.1</a>. Install the Quartus Prime Lite to <code>/home/&lt;user&gt;/intelFPGA/17.1</code> directory.
-		<p class="note"><strong>NOTE</strong>: You will need the complete Quartus Prime Lite version when you want to program the <code>boardtest_1ddr_top.aocx</code> into the flash for permanent availability.</p>
-	</li>
-	<li>Export the Quartus Prime Lite environment variable:
-		<pre class="brush:bash; class-name:dark;">export QUARTUS_ROOTDIR=/home/&lt;user&gt;/intelFPGA/17.1/quartus
-</pre>
-	</li>
-	<li>Go to <code>/opt/altera/aocl-pro-rte/aclrte-linux64/board/a10_1150_sg1/bringup</code>, where <code>boardtest_1ddr_top.aocx </code>is located:
-		<pre class="brush:bash; class-name:dark;">cd /opt/altera/aocl-pro-rte/aclrte-linux64/board/a10_1150_sg1/bringup
-</pre>
-	</li>
-	<li>Program the <code>boardtest_1ddr_top.aocx</code> file to the flash to be made permanently available even after power cycle:
-		<pre class="brush:bash; class-name:dark;">aocl flash acl0 boardtest_1ddr_top.aocx
-</pre>
-
-<p class="note"><strong>NOTE</strong>: You will need the USB Blaster for this.</p>
-	</li>
-	<li>Reboot the host system.</li>
-	<li>Check if the host system recognizes the Intel® Vision Accelerator Design with Intel® Arria® 10 FPGA board. Confirm you can detect the PCIe card:
-		<pre class="brush:bash; class-name:dark;">lspci | grep -i Altera
-</pre>
-
-<p>Your output is similar to:</p>
-
-<pre class="brush:bash; class-name:dark;">01:00.0 Processing accelerators: Altera Corporation Device 2494 (rev 01)
-</pre>
-</li>
-	<li>Source the <code>setup_env.sh</code> script from the <code>fpga_support_files</code> to setup the environment variables:
-		<pre class="brush:bash; class-name:dark;">source /home/&lt;user&gt;/Downloads/fpga_support_file/setup_env.sh
-</pre>
-	</li>
-	<li>Uninstall the previous R4 BSP before installing the OpenCL drivers for the R5 BSP:
-		<pre class="brush:bash; class-name:dark;">aocl uninstall /opt/altera/aocl-pro-rte/aclrte-linux64/board/&lt;R4_BSP_package&gt;/			</pre>
-	</li>
-	<li>Export and source the environment script:
-<pre class="brush:bash; class-name:dark;">export AOCL_BOARD_PACKAGE_ROOT=/opt/altera/aocl-pro-rte/aclrte-linux64/board/a10_1150_sg1
-</pre>
-
-<pre class="brush:bash; class-name:dark;">source /opt/altera/aocl-pro-rte/aclrte-linux64/init_opencl.sh
-</pre>
-</li>
-	<li>Install OpenCL devices:
-		<pre class="brush:bash; class-name:dark;">aocl install	</pre>
-	</li>
-	<li>Run the <code>diagnose</code> command:
-		<pre class="brush:bash; class-name:dark;">aocl diagnose		</pre>
-
-<p>You should see <code>DIAGNOSTIC_PASSED</code> before proceeding to the next steps.</p>
-	</li>
-</ol>
-<h2><a id="program a bitstream" name="program a bitstream"></a>5. Program a Bitstream</h2>
+<h2><a id="program a bitstream" name="program a bitstream"></a>4. Program a Bitstream</h2>
 
 <p>The bitstream you program should correspond to the topology you want to deploy. In this section, you program a SqueezeNet bitstream and deploy the classification sample with a SqueezeNet model that you used the Model Optimizer to convert in the demo above.</p>
 
@@ -292,7 +180,6 @@ find a10_1150_sg1 -type f -print0 | xargs -0 dos2unix	</pre>
 
 <ul>
 	<li>For the Intel® Arria 10GX Developer Kit FPGA, the pre-trained bitstreams are in the <code>/opt/intel/computer_vision_sdk/bitstreams/a10_devkit_bitstreams</code> directory. This demo uses a SqueezeNet bitstream with low precision for the classification sample.</li>
-	<li>For the Intel® Vision Accelerator Design with Intel® Arria® 10 FPGA the pre-trained bistreams are in <code>/opt/intel/computer_vision_sdk/bitstreams/a10_vision_design_bitstreams</code>. This demo uses a SqueezeNet bitstream with low precision for the classification sample.</li>
 </ul>
 
 <ol>
@@ -305,10 +192,7 @@ find a10_1150_sg1 -type f -print0 | xargs -0 dos2unix	</pre>
 	<li>Choose the option based on which card you have:
 		<ul>
 			<li>Program the bitstream for Intel® Arria® 10 FPGA Development Kit:
-				<pre class="brush:bash; class-name:dark;">aocl program acl0 /opt/intel/computer_vision_sdk/a10_devkit_bitstreams/2-0-1_A10DK_FP11_SqueezeNet.aocx</pre>
-			</li>
-			<li>Program the bitstream for the Intel® Vision Accelerator Design with Intel® Arria® 10 FPGA:
-				<pre class="brush:bash; class-name:dark;">aocl program acl0 /opt/intel/computer_vision_sdk/bitstreams/a10_vision_design_bitstreams/4-0_PL1_FP11_SqueezeNet.aocx</pre>
+				<pre class="brush:bash; class-name:dark;">aocl program acl0 /opt/intel/computer_vision_sdk/a10_devkit_bitstreams/5-0-1_A10DK_FP11_SqueezeNet.aocx</pre>
 			</li>
 		</ul>
 	</li>
@@ -329,10 +213,7 @@ find a10_1150_sg1 -type f -print0 | xargs -0 dos2unix	</pre>
 		<pre class="brush:bash; class-name:dark;">jtagconfig --setparam 1 JtagClock 6M</pre>
 	</li>
 	<li>Store the Intel Arria 10 FPGA Development Kit bitstream long term on the board:
-		<pre class="brush:bash; class-name:dark;">aocl flash acl0 /opt/intel/computer_vision_sdk/a10_devkit_bitstreams/2-0-1_A10DK_FP11_SqueezeNet.aocx</pre>
-	</li>
-	<li>Store the Intel Vision Accelerator Design with Intel Arria 10 FPGA bistream on the board:
-		<pre class="brush:bash; class-name:dark;">aocl flash acl0 /opt/intel/computer_vision_sdk/bitstreams/a10_vision_design_bitstreams/4-0_PL1_FP11_SqueezeNet.aocx</pre>
+		<pre class="brush:bash; class-name:dark;">aocl flash acl0 /opt/intel/computer_vision_sdk/a10_devkit_bitstreams/5-0-1_A10DK_FP11_SqueezeNet.aocx</pre>
 	</li>
 </ol>
 
@@ -343,7 +224,7 @@ find a10_1150_sg1 -type f -print0 | xargs -0 dos2unix	</pre>
 020A40DD 5M(1270ZF324|2210Z)/EPM2210
 		</pre>
 
-<h3>Setup a Neural Network Model for FPGA</h3>
+<h2>5. Setup a Neural Network Model for FPGA</h2>
 
 <p>In this section, you create an FP16 model suitable for hardware accelerators. For more information, see the <a href="https://software.intel.com/en-us/articles/OpenVINO-InferEngine#fpga-plugin">FPGA plugins</a> section in the Inference Engine Developer Guide.</p>
 
@@ -364,7 +245,8 @@ find a10_1150_sg1 -type f -print0 | xargs -0 dos2unix	</pre>
 		<pre class="brush:bash; class-name:dark;">sudo cp /opt/intel/computer_vision_sdk/deployment_tools/demo/car.png  ~/inference_engine_samples/intel64/Release</pre>
 	</li>
 </ol>
-## Run a Sample Application
+
+<h2> 6. Run a Sample Application </h2>
 
 1. Go to the samples directory
 
