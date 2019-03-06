@@ -72,9 +72,9 @@
 <ol>
 	<li>Go to the <code> config</code> folder of the <code>fpga_support_files</code> directory where the a10_1150_sg1 is located:
 
-		<pre class="brush:bash; class-name:dark;">cd /home/&lt;user&gt;/Downloads/fpga_support_files/config/
+<pre class="brush:bash; class-name:dark;">cd /home/&lt;user&gt;/Downloads/fpga_support_files/config/
 </pre>
-	</li>
+</li>
 	<li>Copy the <code>a10_1150_sg1</code> folder to the <code>board</code> directory:
 		<pre class="brush:bash; class-name:dark;">sudo cp -rf a10_1150_sg1 /opt/altera/aocl-pro-rte/aclrte-linux64/board/
 </pre>
