@@ -78,139 +78,83 @@ Run the built in self-test to verify operation of the Acceleration Stack and PAC
 
 Extract the BSP
 
-<code>cd $OPAE_PLATFORM_ROOT/opencl
+<code>cd $OPAE_PLATFORM_ROOT/opencl</code>
 
-<code>sudo tar xf opencl_bsp.tar.gz
+<code>sudo tar xf opencl_bsp.tar.gz</code>
 
 Create an initialization script ~/init_openvino.sh with the following content that can be run upon opening a new terminal or rebooting.  This will source the script ran above as well as setting up the OpenCL environment.
 
-<code>source $HOME/tools/intelrtestack/init_env.sh
+<code>source \$HOME/tools/intelrtestack/init_env.sh
 <code>export CL_CONTEXT_COMPILER_MODE_ALTERA=3
-code>export CL_CONTEXT_COMPILER_MODE_INTELFPGA=3
-code>export INTELFPGAOCLSDKROOT="$HOME/tools/intelrtestack/intelFPGA_pro/aclrte-linux64"
-code>export ALTERAOCLSDKROOT="$INTELFPGAOCLSDKROOT"
-code>export AOCL_BOARD_PACKAGE_ROOT="$OPAE_PLATFORM_ROOT/opencl/opencl_bsp"
-code>$AOCL_BOARD_PACKAGE_ROOT/linux64/libexec/setup_permissions.sh
-code>source $INTELFPGAOCLSDKROOT/init_opencl.sh
+<code>export CL_CONTEXT_COMPILER_MODE_INTELFPGA=3
+<code>export INTELFPGAOCLSDKROOT="\$HOME/tools/intelrtestack/intelFPGA_pro/aclrte-linux64"
+<code>export ALTERAOCLSDKROOT="\$INTELFPGAOCLSDKROOT"
+<code>export AOCL_BOARD_PACKAGE_ROOT="\$OPAE_PLATFORM_ROOT/opencl/opencl_bsp"
+<code>\$AOCL_BOARD_PACKAGE_ROOT/linux64/libexec/setup_permissions.sh
+<code>source $INTELFPGAOCLSDKROOT/init_opencl.sh
 </code>
 
 Source the script:
 
-source ~/init_openvino.sh
+<code>source ~/init_openvino.sh</code>
 
 Some of the settings made in the child scripts need a reboot to take effect.  Reboot the machine and source the script again.  Note that this script should be sourced each time a new terminal is opened for use with the Acceleration Stack and OpenVINO.
 
-source ~/init_openvino.sh
+<code>source ~/init_openvino.sh</code>
 
 Install the OpenCL driver:
 
-cd ~
+<code>cd ~</code>
 
-sudo -E ./tools/intelrtestack/intelFPGA_pro/aclrte-linux64/bin/aocl install
+<code>sudo -E ./tools/intelrtestack/intelFPGA_pro/aclrte-linux64/bin/aocl install</code>
 
 Select Y when asked to install the BSP.  Note that the following warning can be safely ignored.
 
-WARNING: install not implemented.  Please refer to DCP Quick Start User Guide.
+<code>WARNING: install not implemented.  Please refer to DCP Quick Start User Guide.</code>
 
 Program the PAC board with a pre-compiled aocx file (OpenCL based FPGA bitstream).
 
-cd $OPAE_PLATFORM_ROOT/opencl
+<code>cd \$OPAE_PLATFORM_ROOT/opencl</code>
 
-aocl program acl0 hello_world.aocx
+<code>aocl program acl0 hello_world.aocx</code>
 
 Run the Hello World application:
 
-sudo tar xf exm_opencl_hello_world_x64_linux.tgz
+<code>sudo tar xf exm_opencl_hello_world_x64_linux.tgz
 
-sudo chmod -R a+w hello_world
+<code>sudo chmod -R a+w hello_world
 
-cd hello_world
+<code>cd hello_world
 
-make
+<code>make
 
-cp ../hello_world.aocx ./bin
+<code>cp ../hello_world.aocx ./bin
 
-./bin/host
+<code>./bin/host
 
-# Install OpenVINO with FPGA Support
+# Adding OpenVINO with FPGA Support to Environment Variables
 
-Download the installer from the following web site to ~/Downloads.
 
-https://software.intel.com/en-us/openvino-toolkit/choose-download/free-download-linux-fpga
+To run OpenVINO, add the last 4 commands to the ~/init_openvino.sh script.  The previous content is shown as well.
 
-After registration, be sure to choose the product "_OpenVINO™ toolkit for Linux* with FPGA Support_"
+<code>source \$HOME/tools/intelrtestack/init_env.sh
+<code>export CL_CONTEXT_COMPILER_MODE_ALTERA=3
+<code>export CL_CONTEXT_COMPILER_MODE_INTELFPGA=3
+<code>export INTELFPGAOCLSDKROOT="\$HOME/tools/intelrtestack/intelFPGA_pro/aclrte-linux64"
+<code>export ALTERAOCLSDKROOT="\$INTELFPGAOCLSDKROOT"
+<code>export AOCL_BOARD_PACKAGE_ROOT="\$OPAE_PLATFORM_ROOT/opencl/opencl_bsp"
+<code>\$AOCL_BOARD_PACKAGE_ROOT/linux64/libexec/setup_permissions.sh
+<code>source $INTELFPGAOCLSDKROOT/init_opencl.sh
+<code>export IE_INSTALL="/opt/intel/computer_vision_sdk/deployment_tools"
+<code>source \$IE_INSTALL/../bin/setupvars.sh
+<code>export PATH="\$PATH:\$HOME/inference_engine_samples/intel64/Release"
+<code>alias mo="python3.6 \$IE_INSTALL/model_optimizer/mo.py"
 
-Install OpenVINO:
-
-cd ~/Downloads
-
-tar -xvzf l_openvino_toolkit_fpga_p_<version>.tgz
-
-cd l_openvino_toolkit_fpga_p_<version>
-
-sudo ./install_GUI.sh
-
-Accept the license and install with the default options. There are likely to be three prerequisites missing as listed below.  These can be ignored for now and installed later with a script that will be found in the installation.
-
-OpenCL™ driver
-
-Python* version 3.5 or higher
-
-ffmpeg
-
-Once the installer is finished, add the missing pre-requisites listed above:
-
-cd /opt/intel/computer_vision_sdk_fpga_<version>/install_dependencies
-
-sudo -E ./install_cv_sdk_dependencies.sh
-
-Configure Model Optimizer for all supported frameworks at the same time:
-
-cd /opt/intel/computer_vision_sdk_fpga_<version>/deployment_tools/model_optimizer/install_prerequisites
-
-sudo ./install_prerequisites.sh
-
-Run SqueezeNet Demo targeting CPU to check install:
-
-cd /opt/intel/computer_vision_sdk_fpga_<version>/deployment_tools/demo
-
-./demo_squeezenet_download_convert_run.sh
-
-Now run the SqueezeNet Demo on FPGA:
-
-aocl program acl0 /opt/intel/computer_vision_sdk_fpga_<version>/bitstreams/a10_dcp_bitstreams/5-0_RC_FP11_SqueezeNet.aocx
-
-./demo_squeezenet_download_convert_run.sh -d HETERO:FPGA,CPU
-
-The demo scripts above install various additional packages and OpenVINO content, some of which is listed below:
-
-Models used in above demo
-
-~/openvino_models
-
-Inference Engine Samples
-
-~/inference_engine_samples
-
-To run OpenVINO independently of the above scripts, add the following convenience commands to the ~/init_openvino.sh script.  The previous content is shown in faint text.
-
-<![if !vml]>![Text Box: source $HOME/tools/intelrtestack/init_env.sh
-export CL_CONTEXT_COMPILER_MODE_ALTERA=3
-export CL_CONTEXT_COMPILER_MODE_INTELFPGA=3
-export INTELFPGAOCLSDKROOT="$HOME/tools/intelrtestack/intelFPGA_pro/aclrte-linux64"
-export ALTERAOCLSDKROOT="$INTELFPGAOCLSDKROOT"
-export AOCL_BOARD_PACKAGE_ROOT="$OPAE_PLATFORM_ROOT/opencl/opencl_bsp"
-$AOCL_BOARD_PACKAGE_ROOT/linux64/libexec/setup_permissions.sh
-source $INTELFPGAOCLSDKROOT/init_opencl.sh
-export IE_INSTALL="/opt/intel/computer_vision_sdk/deployment_tools"
-source $IE_INSTALL/../bin/setupvars.sh
-export PATH="$PATH:$HOME/inference_engine_samples/intel64/Release"
-alias mo="python3.6 $IE_INSTALL/model_optimizer/mo.py"
-](file:///C:/Users/bcover/AppData/Local/Temp/msohtmlclip1/01/clip_image002.png)<![endif]>
+</code>
 
 Source the script
 
-source ~/init_openvino.sh
+<code>source ~/init_openvino.sh</code>
 
 ## Using OpenVINO
 
