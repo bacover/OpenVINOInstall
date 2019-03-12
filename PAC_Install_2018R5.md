@@ -83,6 +83,7 @@ Extract the BSP
 Create an initialization script ~/init_openvino.sh with the following content that can be run upon opening a new terminal or rebooting.  This will source the script ran above as well as setting up the OpenCL environment.
 
 `source \$HOME/tools/intelrtestack/init_env.sh`
+
 `export CL_CONTEXT_COMPILER_MODE_ALTERA=3`
 `export CL_CONTEXT_COMPILER_MODE_INTELFPGA=3`
 `export INTELFPGAOCLSDKROOT="\$HOME/tools/intelrtestack/intelFPGA_pro/aclrte-linux64"`
