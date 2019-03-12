@@ -1,7 +1,7 @@
-# OpenVINO 2018R5 Install Guide for the Intel® Arria® 10 GX FPGA Development Kit on Linux (Ubuntu/CentOS) 
+# Configuration Guide for OpenVINO 2018R5 and the Intel® Arria® 10 GX FPGA Development Kit on Linux (Ubuntu/CentOS) 
 
 
-Installation Notes:
+Configuration Notes:
 
   * For a first-time installation, use all steps.
   * Use steps 1 and 2 only after receiving a new FPGA card.
