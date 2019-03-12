@@ -135,17 +135,29 @@ Run the Hello World application:
 To run OpenVINO, add the last 4 commands to the ~/init_openvino.sh script.  The previous content is shown as well.
 
 `source \$HOME/tools/intelrtestack/init_env.sh`
+
 `export CL_CONTEXT_COMPILER_MODE_ALTERA=3`
+
 `export CL_CONTEXT_COMPILER_MODE_INTELFPGA=3`
+
 `export INTELFPGAOCLSDKROOT="\$HOME/tools/intelrtestack/intelFPGA_pro/aclrte-linux64"`
+
 `export ALTERAOCLSDKROOT="\$INTELFPGAOCLSDKROOT"`
+
 `export AOCL_BOARD_PACKAGE_ROOT="\$OPAE_PLATFORM_ROOT/opencl/opencl_bsp"`
+
 `\$AOCL_BOARD_PACKAGE_ROOT/linux64/libexec/setup_permissions.sh`
+
 `source $INTELFPGAOCLSDKROOT/init_opencl.sh`
+
 `export IE_INSTALL="/opt/intel/computer_vision_sdk/deployment_tools"`
+
 `source \$IE_INSTALL/../bin/setupvars.sh`
+
 `export PATH="\$PATH:\$HOME/inference_engine_samples/intel64/Release"`
+
 `alias mo="python3.6 \$IE_INSTALL/model_optimizer/mo.py"`
+
 
 Source the script
 
