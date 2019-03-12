@@ -169,14 +169,14 @@ If successful, you see a response similar to:
 
 ## 4. Program a Bitstream
 
-The bitstream you program should correspond to the topology you want to deploy. In this section, you program a SqueezeNet bitstream and deploy the classification sample with a SqueezeNet model that you used the Model Optimizer to convert in the demo above.
+The bitstream you program should correspond to the topology you want to deploy. In this section, you program a SqueezeNet bitstream and deploy the classification sample with a SqueezeNet model that you used the Model Optimizer to convert in the example above.
 
 **IMPORTANT**: Only use bitstreams from the installed version of the Intel Distribution of OpenVINO toolkit. Bitstreams from older versions of the OpenVINO™ toolkit are incompatible with later versions of the Intel Distribution of OpenVINO toolkit. For example, you cannot use the `1-0-1_A10DK_FP16_Generic` bitstream, when the Intel Distribution of OpenVINO toolkit supports the `2-0-1_A10DK_FP16_Generic bitstream`.
 
 Depending on how many bitstreams you selected, there are different folders for each FPGA card type which were downloaded in the Intel Distribution of OpenVINO package:
 
 
-  * For the Intel® Arria 10GX Developer Kit FPGA, the pre-trained bitstreams are in the `/opt/intel/computer_vision_sdk/bitstreams/a10_devkit_bitstreams` directory. This demo uses a SqueezeNet bitstream with low precision for the classification sample.
+  * For the Intel® Arria 10GX Developer Kit FPGA, the pre-trained bitstreams are in the `/opt/intel/computer_vision_sdk/bitstreams/a10_devkit_bitstreams` directory. This example uses a SqueezeNet bitstream with low precision for the classification sample.
 
 
 
