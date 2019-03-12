@@ -1,4 +1,4 @@
-# OpenVINO 2018R5 Install Guide for the Intel® Programmable Acceleration Card with Intel Arria® 10 GX FPGA on CentOS 
+# Configuration Guide for OpenVINO 2018R5 and the Intel® Programmable Acceleration Card with Intel Arria® 10 GX FPGA on CentOS 
 
 
 
