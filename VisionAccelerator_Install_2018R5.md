@@ -1,7 +1,6 @@
 # OpenVINO Install guide for the Intel® Vision Accelerator Design with an Intel® Arria 10 FPGA (IEI's Mustang-F100-A10) on Linux
 
 
-<p class="note"><strong>NOTE</strong>: This installation guide is written for the Intel® Vision Accelerator Design with an Intel® Arria 10 FPGA (IEI's Mustang-F100-A10) on Linux (Ubuntu/CentOS).</p>
 
 <p>Installation Notes:</p>
 
