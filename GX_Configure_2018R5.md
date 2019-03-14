@@ -1,28 +1,28 @@
-# Configuration Guide for OpenVINO 2018R5 and the Intel® Arria® 10 GX FPGA Development Kit on Linux (Ubuntu/CentOS) 
+# Configuration Guide for the Intel® Distribution of OpenVINO™ Toolkit 2018R5 and the Intel® Arria® 10 FPGA GX Development Kit on Linux* (Ubuntu*/CentOS*) 
 
 
 Configuration Notes:
 
   * For a first-time installation, use all steps.
   * Use steps 1 and 2 only after receiving a new FPGA card.
-  * Repeat steps 3-6 when installing a new version of the Intel Distribution of OpenVINO toolkit.
-  * Use steps 4-6 when a Neural Network topology used by an Intel Distribution of OpenVINO application changes.
+  * Repeat steps 3-6 when installing a new version of the Intel® Distribution of OpenVINO™ toolkit.
+  * Use steps 4-6 when a Neural Network topology used by an Intel® Distribution of OpenVINO™ toolkit application changes.
 
 
-## 1. Configure the Intel® Arria® 10 GX FPGA Development Kit
+## 1. Configure the Intel® Arria® 10 FPGA GX Development Kit
 
-To configure the Intel® Arria® 10 GX FPGA Development Kit, use the instruction in the [Configuring the Intel® Arria 10 GX FPGA Development Kit for the Intel FPGA SDK for OpenCL](https://www.intel.com/content/www/us/en/programmable/documentation/tgy1490191698959.html?_ga=2.246291212.90797072.1535473709-1926199859.1534783437) guide. Stop after you configure and install the Intel Arria 10 GX FPGA Development Kit board. Do not follow the steps in the rest of the document. Instead, return to this document upon completing the specified section.
+To configure the Intel® Arria® 10 GX FPGA Development Kit, use the instruction in the [Configuring the Intel® Arria 10 FPGA GX Development Kit for the Intel® FPGA SDK for OpenCL™](https://www.intel.com/content/www/us/en/programmable/documentation/tgy1490191698959.html?_ga=2.246291212.90797072.1535473709-1926199859.1534783437) guide. Stop after you configure and install the Intel® Arria® 10 FPGA GX Development Kit board. Do not follow the steps in the rest of the document. Instead, return to this document upon completing the specified section.
 
 ![](https://software.intel.com/sites/default/files/managed/43/e6/initialize%20STOP%20copy.png)
 
-## 2. Program the Intel® Arria® 10 GX FPGA Development Kit
+## 2. Program the Intel® Arria® 10 FPGA GX Development Kit
 
 **NOTE**: You need to do this only once, after you set up the FPGA board.
 
 
   * Use one of the following two links to download the Intel® Quartus® software, depending on the version you want:
 		
-  * If you have an Intel® Quartus® license, use  [QuartusProProgrammerSetup-17.1.0.240-linux](http://fpgasoftware.intel.com/17.1/?edition=pro&amp;platform=linux&amp;download_manager=dlm3&amp;product=qprogrammer#tabs-4). This software uses about 500 MB of disk space.
+  * If you have an Intel® Quartus® software license, use  [QuartusProProgrammerSetup-17.1.0.240-linux](http://fpgasoftware.intel.com/17.1/?edition=pro&amp;platform=linux&amp;download_manager=dlm3&amp;product=qprogrammer#tabs-4). This software uses about 500 MB of disk space.
 
 ![](https://software.intel.com/sites/default/files/managed/7c/b9/Quartus%20Pro%20Download.png)
 			
@@ -31,28 +31,28 @@ To configure the Intel® Arria® 10 GX FPGA Development Kit, use the instruction
 			
 		
 	
-  * Go to the `Downloads` directory or the directory to which you downloaded the Intel® Quartus® package. This document assumes the software is in the `Downloads` directory:
+  * Go to the `Downloads` directory or the directory to which you downloaded the Intel® Quartus® software package. This document assumes the software is in the `Downloads` directory:
 		`cd ~/Downloads`
 	
   * Use the command for the package you downloaded:
 		
-	  * **Option 1: Intel® Quartus® Pro:**
+	  * **Option 1: Intel® Quartus® software Pro:**
 				`sudo chmod +x QuartusProProgrammerSetup-17.1.0.240-linux.run`
 			
-	  * **Option 2: Intel® Quartus® Lite:**
+	  * **Option 2: Intel® Quartus® software Lite:**
 				`chmod +x QuartusProgrammerSetup-17.1.0.590-linux.run`		
 	
-  * Run the Intel® Quartus® Installer:
+  * Run the Intel® Quartus® software Installer:
 		`sudo ./Quartus.<version>.run`
 	
   * Click through the installer to the end. Remove the checkmarks from all boxes at the end of the installation.
-  * By default, the software is installed under `/home/user`. We suggest changing this directory to `/opt/altera` during the installation. A subdirectory is created with the name dependent on your version of Intel® Quartus®:
+  * By default, the software is installed under `/home/user`. We suggest changing this directory to `/opt/altera` during the installation. A subdirectory is created with the name dependent on your version of Intel® Quartus® software:
 		
-	  * Intel® Quartus® Pro: `/opt/altera/intelFPGA_pro/17.1`
-	  * Intel® Quartus® Lite: `/opt/altera/intelFPGA/17.1`
+	  * Intel® Quartus® software Pro: `/opt/altera/intelFPGA_pro/17.1`
+	  * Intel® Quartus® software Lite: `/opt/altera/intelFPGA/17.1`
 		
 	
-  * Download `fpga_support_files.tgz` from the [Intel Registration Center](http://registrationcenter-download.intel.com/akdlm/irc_nas/12954/fpga_support_files.tgz). The files in this `.tgz` archive are required to ensure your FPGA card and the Intel Distribution of OpenVINO toolkit work correctly.
+  * Download `fpga_support_files.tgz` from the [Intel Registration Center](http://registrationcenter-download.intel.com/akdlm/irc_nas/12954/fpga_support_files.tgz). The files in this `.tgz` archive are required to ensure your FPGA card and the Intel® Distribution of OpenVINO™ toolkit work correctly.
   * Go to the directory where you downloaded the `fpga_support_files.tgz` archive.
   * Unpack the `.tgz` file:
 		`tar -xvzf fpga_support_files.tgz`
@@ -74,7 +74,7 @@ To configure the Intel® Arria® 10 GX FPGA Development Kit, use the instruction
 	  * Load the USB rules:
 		`sudo udevadm control --reload-rules &amp;&amp; udevadm trigger`
 	
-	  * Unplug and replug the Micro-USB cable from the Intel® Arria 10 GX board for JTAG.
+	  * Unplug and replug the micro USB cable from the Intel® Arria® 10 FPGA GX board for JTAG.
 	  * [OPTIONAL] Validate that the cable is connected:
 		`lsusb | grep Altera`
 
@@ -123,7 +123,7 @@ If successful, you see a response similar to:
 
 
 
-  * Download `fpga_support_files.tgz` from [the Intel Registration Center.](http://registrationcenter-download.intel.com/akdlm/irc_nas/12954/fpga_support_files.tgz) The files in this `.tgz` are required to ensure your FPGA card and Intel Distribution of OpenVINO toolkit work correctly. Right click or save the file instead of letting your browser extract automatically.
+  * Download `fpga_support_files.tgz` from [the Intel Registration Center.](http://registrationcenter-download.intel.com/akdlm/irc_nas/12954/fpga_support_files.tgz) The files in this `.tgz` are required to ensure your FPGA card and Intel® Distribution of OpenVINO™ toolkit work correctly. Right click or save the file instead of letting your browser extract automatically.
   * Go to the directory where you downloaded `fpga_support_files.tgz`.
   * Unpack the `.tgz` file:
 		`tar -xvzf fpga_support_files.tgz`
@@ -133,7 +133,7 @@ If successful, you see a response similar to:
 	
 
 
-**NOTE**: These steps are for both Intel Arria 10 FPGA cards.
+**NOTE**: These steps are for both Intel® Arria® 10 FPGA cards.
 
 
   * Switch to superuser:
@@ -145,15 +145,15 @@ If successful, you see a response similar to:
   * Change directory to `Downloads/fpga_support_files/`:
 		`cd /home/<user>/Downloads/fpga_support_files/`
 	
-  * Run the FPGA dependencies script, which allows OpenCL to support Ubuntu and recent kernels:
+  * Run the FPGA dependencies script, which allows OpenCL™ to support Ubuntu* and recent kernels:
 		`./install_openvino_fpga_dependencies.sh`
 
 
-  * When asked, select the FPGA card, Intel® GPU, and Movidius Neural Compute Stick, then you can install the correct dependencies.
+  * When asked, select the FPGA card, Intel® GPU, and Intel® Movidius™ Neural Compute Stick, then you can install the correct dependencies.
   * If you installed the 4.14 kernel, you will need to reboot the machine and select the new kernel in the Ubuntu (grub) boot menu. You will also need to redo steps 1 and 2 to set up your environmental variables again.
 		
 	
-  * Install OpenCL devices. Enter `Y` when prompted to install:
+  * Install OpenCL™ devices. Enter `Y` when prompted to install:
 		`aocl install`
 	
   * Reboot the machine:
@@ -171,12 +171,12 @@ If successful, you see a response similar to:
 
 The bitstream you program should correspond to the topology you want to deploy. In this section, you program a SqueezeNet bitstream and deploy the classification sample with a SqueezeNet model that you used the Model Optimizer to convert in the example above.
 
-**IMPORTANT**: Only use bitstreams from the installed version of the Intel Distribution of OpenVINO toolkit. Bitstreams from older versions of the OpenVINO™ toolkit are incompatible with later versions of the Intel Distribution of OpenVINO toolkit. For example, you cannot use the `1-0-1_A10DK_FP16_Generic` bitstream, when the Intel Distribution of OpenVINO toolkit supports the `2-0-1_A10DK_FP16_Generic bitstream`.
+**IMPORTANT**: Only use bitstreams from the installed version of the Intel® Distribution of OpenVINO™ toolkit. Bitstreams from older versions of the Intel® Distribution of OpenVINO™ toolkit are incompatible with later versions. For example, you cannot use the `1-0-1_A10DK_FP16_Generic` bitstream, when the Intel® Distribution of OpenVINO™ toolkit supports the `2-0-1_A10DK_FP16_Generic bitstream`.
 
-Depending on how many bitstreams you selected, there are different folders for each FPGA card type which were downloaded in the Intel Distribution of OpenVINO package:
+Depending on how many bitstreams you selected, there are different folders for each FPGA card type which were downloaded in the Intel® Distribution of OpenVINO™ toolkit package:
 
 
-  * For the Intel® Arria 10GX Developer Kit FPGA, the pre-trained bitstreams are in the `/opt/intel/computer_vision_sdk/bitstreams/a10_devkit_bitstreams` directory. This example uses a SqueezeNet bitstream with low precision for the classification sample.
+  * For the Intel® Arria 10 FPGA GX Developer Kit, the pre-trained bitstreams are in the `/opt/intel/computer_vision_sdk/bitstreams/a10_devkit_bitstreams` directory. This example uses a SqueezeNet bitstream with low precision for the classification sample.
 
 
 
@@ -188,7 +188,7 @@ Depending on how many bitstreams you selected, there are different folders for e
 	
   * Choose the option based on which card you have:
 		
-  * Program the bitstream for Intel® Arria® 10 FPGA Development Kit:
+  * Program the bitstream for Intel® Arria® 10 FPGA GX Development Kit:
 				`aocl program acl0 /opt/intel/computer_vision_sdk/a10_devkit_bitstreams/5-0-1_A10DK_FP11_SqueezeNet.aocx`
 			
 		
@@ -198,18 +198,18 @@ Depending on how many bitstreams you selected, there are different folders for e
 ### Optional Steps to Flash the FPGA Card
 
 **NOTE**:
-	- To avoid having to reprogram the board after a power down, a bitstream will be programmed to permanent memory on the Intel® Arria® 10 GX FPGA Development Kit. This will take about 20 minutes.
-	- The following steps 1-5 need to be done only once for a new Intel® Arria 10 FPGA card.
+	- To avoid having to reprogram the board after a power down, a bitstream will be programmed to permanent memory on the Intel® Arria® 10 FPGA GX Development Kit. This will take about 20 minutes.
+	- The following steps 1-5 need to be done only once for a new Intel® Arria® 10 FPGA card.
 
 
-  * Plug in the Micro USB cable to the card and your host system.
+  * Plug in the micro USB cable to the card and your host system.
   * Run `jtagconfig` to ensure that the cable is properly inserted:
 		`jtagconfig`
 	
   * Use `jtagconfig` to slow the clock:
 		`jtagconfig --setparam 1 JtagClock 6M`
 	
-  * Store the Intel Arria 10 FPGA Development Kit bitstream long term on the board:
+  * Store the Intel® Arria® 10 FPGA GX Development Kit bitstream long term on the board:
 		`aocl flash acl0 /opt/intel/computer_vision_sdk/a10_devkit_bitstreams/5-0-1_A10DK_FP11_SqueezeNet.aocx`
 	
 
@@ -232,7 +232,7 @@ In this section, you create an FP16 model suitable for hardware accelerators. Fo
   * Go to `/home/<user>/squeezenet1.1_FP16`:
 		`cd /home/<user>/squeezenet1.1_FP16`
 	
-  * Use the Model Optimizer to convert an FP16 SqueezeNet Caffe model into an optimized Intermediate Representation (IR):
+  * Use the Model Optimizer to convert an FP16 SqueezeNet Caffe* model into an optimized Intermediate Representation (IR):
 		`python3 /opt/intel/computer_vision_sdk/deployment_tools/model_optimizer/mo.py --input_model /home/<user>/openvino_models/FP32/classification/squeezenet/1.1/caffe/squeezenet1.1.caffemodel --data_type FP16 --output_dir .`
 	
   * The `squeezenet1.1.labels` file contains the classes `ImageNet` uses. This file is included so that the inference results show text instead of classification numbers. Copy `squeezenet1.1.labels` to the your optimized model location:
@@ -265,15 +265,15 @@ The throughput on FPGA is listed and may show a lower FPS. This is due to the in
 
 `./classification_sample -i car.png -m ~/squeezenet1.1_FP16/squeezenet1.1.xml -d HETERO:FPGA,CPU -ni 100`
 
-Congratulations, You are done with the OpenVINO installation for FPGA. To learn more about how OpenVINO works, the Hello World tutorial and are other resources are provided below.
+Congratulations, You are done with the OpenVINO installation for FPGA. To learn more about how the Intel® Distribution of OpenVINO™ toolkit works, the Hello World tutorial and are other resources are provided below.
 
 ## Hello World Face Detection Tutorial
 
-Use the  [OpenVINO with FPGA Hello World Face Detection Exercise](https://github.com/fritzboyle/openvino-with-fpga-hello-world-face-detection)to learn more about how the software and hardware work together.
+Use the  [Intel® Distribution of OpenVINO™ toolkit with FPGA Hello World Face Detection Exercise](https://github.com/fritzboyle/openvino-with-fpga-hello-world-face-detection)to learn more about how the software and hardware work together.
 
 ## Additional Resources
 
-Intel® Distribution of OpenVINO™ home page:  [https://software.intel.com/en-us/openvino-toolkit](https://software.intel.com/en-us/openvino-toolkit)
+Intel® Distribution of OpenVINO™ toolkit home page:  [https://software.intel.com/en-us/openvino-toolkit](https://software.intel.com/en-us/openvino-toolkit)
 
 Intel® Distribution of OpenVINO™ toolkit documentation:  [https://software.intel.com/en-us/openvino-toolkit/documentation/featured](https://software.intel.com/en-us/openvino-toolkit/documentation/featured)
 
