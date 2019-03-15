@@ -1,17 +1,17 @@
-# Configuration Guide for OpenVINO 2018R5 and the Intel® Vision Accelerator Design with an Intel® Arria 10 FPGA (IEI's Mustang-F100-A10) on Linux
+# Configuration Guide for the Intel® Distribution of OpenVINO™ toolkit 2018R5 and the Intel® Vision Accelerator Design with an Intel® Arria® 10 FPGA (IEI's Mustang-F100-A10) on Linux*
 
 
 Configuration Notes:
 
   * For a first-time installation, use all steps.
   * Use steps 1 and 2 only after receiving a new FPGA card.
-  * Repeat steps 2-5 when installing a new version of the Intel Distribution of OpenVINO toolkit.
-  * Use steps 3-5 when a Neural Network topology used by an Intel Distribution of OpenVINO application changes.
+  * Repeat steps 2-5 when installing a new version of the Intel® Distribution of OpenVINO™ toolkit.
+  * Use steps 3-5 when a Neural Network topology used by an Intel® Distribution of OpenVINO™ toolkit application changes.
 
 
-## 1. Configure and Install the Intel® Vision Accelerator Design with an Intel® Arria 10 FPGA
+## 1. Configure and Install the Intel® Vision Accelerator Design with an Intel® Arria® 10 FPGA
 
-  * Download `fpga_support_files.tgz` from the [Intel Registration Center](http://registrationcenter-download.intel.com/akdlm/irc_nas/12954/fpga_support_files.tgz). The files in this `.tgz` archive are required to ensure your FPGA card and the Intel Distribution of OpenVINO toolkit work correctly.
+  * Download `fpga_support_files.tgz` from the [Intel Registration Center](http://registrationcenter-download.intel.com/akdlm/irc_nas/12954/fpga_support_files.tgz). The files in this `.tgz` archive are required to ensure your FPGA card and the Intel® Distribution of OpenVINO™ toolkit work correctly.
   * Go to the directory where you downloaded the `fpga_support_files.tgz` archive.
   * Unpack the `.tgz` file:
 		`tar -xvzf fpga_support_files.tgz`
@@ -38,15 +38,15 @@ Configuration Notes:
   * Change directory to `Downloads/fpga_support_files/`:
 		`cd /home/<user>/Downloads/fpga_support_files/`
 	
-  * Run the FPGA dependencies script, which allows OpenCL to support Ubuntu and recent kernels:
+  * Run the FPGA dependencies script, which allows OpenCL to support Ubuntu* and recent kernels:
 		`./install_openvino_fpga_dependencies.sh`
 
 
-  * When asked, select the FPGA card, Intel® GPU, and Movidius Neural Compute Stick, then you can install the correct dependencies.
+  * When asked, select the FPGA card, Intel® GPU, and Intel® Movidius™ Neural Compute Stick, then you can install the correct dependencies.
   * If you installed the 4.14 kernel as part of the installation script, you will need to reboot the machine and select the new kernel in the Ubuntu (grub) boot menu. You will also need to rerun setup_env.sh to set up your environmental variables again.
 		
 	
-  * Install OpenCL devices. Enter `Y` when prompted to install:
+  * Install OpenCL™ devices. Enter `Y` when prompted to install:
 		`aocl install`
 	
   * Reboot the machine:
@@ -63,9 +63,9 @@ Configuration Notes:
 
 ## 2. Set Up the Intel® Vision Accelerator Design with Intel® Arria® 10 FPGA for R5
 
-For the R5 release, the Intel® Distribution of OpenVINO™ toolkit introduced a new board support package (BSP) `a10_1150_sg1` for the Intel® Vision Accelerator Design with an Intel® Arria 10 FPGA, which is included into the `fpga_support_files.tgz` archive. To program the bitstreams for the Intel Distribution of OpenVINO toolkit R5, you need to program the BSP into the board using the USB blaster:
+For the R5 release, the Intel® Distribution of OpenVINO™ toolkit introduced a new board support package (BSP) `a10_1150_sg1` for the Intel® Vision Accelerator Design with an Intel® Arria®  10 FPGA, which is included into the `fpga_support_files.tgz` archive. To program the bitstreams for the Intel® Distribution of OpenVINO™ toolkit R5, you need to program the BSP into the board using the USB blaster:
 
-**NOTE**: These steps apply only if you update to the Intel Distribution of OpenVINO toolkit R5. Otherwise, you can skip them.
+**NOTE**: These steps apply only if you update to the Intel® Distribution of OpenVINO™ toolkit R5. Otherwise, you can skip them.
 
 
   * Go to the ` config` folder of the `fpga_support_files` directory where the a10_1150_sg1 is located:
@@ -102,7 +102,7 @@ find a10_1150_sg1 -type f -print0 | xargs -0 dos2unix	`
 		`source /home/<user>/Downloads/fpga_support_files/setup_env.sh
 `
 	
-  * Update the Intel FPGA Download Cable rules to program the board without root permissions and to flash the initialization bitstreams so that the Intel FPGA Download Cable can communicate with the board: 
+  * Update the Intel® FPGA Download Cable rules to program the board without root permissions and to flash the initialization bitstreams so that the Intel® FPGA Download Cable can communicate with the board: 
 		`sudo cp config/51-usbblaster.rules /etc/udev/rules.d
 `
 	
@@ -121,10 +121,10 @@ Your output is similar to:
 02E660DD   10AX115H1(.|E2|ES)/10AX115H2/.. 
 `
 
-  * Download [Quartus Prime Lite Edition 17.1](http://fpgasoftware.intel.com/17.1/?edition=lite). Install the Quartus Prime Lite to `/home/<user>/intelFPGA/17.1` directory.
-		**NOTE**: You will need the complete Quartus Prime Lite version when you want to program the `boardtest_1ddr_top.aocx` into the flash for permanent availability.
+  * Download [Intel® Quartus® Prime Software Lite Edition 17.1](http://fpgasoftware.intel.com/17.1/?edition=lite). Install the Intel® Quartus® Prime Software Lite to `/home/<user>/intelFPGA/17.1` directory.
+		**NOTE**: You will need the complete the Intel® Quartus® Prime Software Lite version when you want to program the `boardtest_1ddr_top.aocx` into the flash for permanent availability.
 	
-  * Export the Quartus Prime Lite environment variable:
+  * Export the Intel® Quartus® Prime Software Lite environment variable:
 		`export QUARTUS_ROOTDIR=/home/<user>/intelFPGA/17.1/quartus
 `
 	
@@ -169,7 +169,7 @@ Your output is similar to:
 `source /opt/altera/aocl-pro-rte/aclrte-linux64/init_opencl.sh
 `
 
-  * Install OpenCL devices:
+  * Install OpenCL™ devices:
 		`aocl install	`
 	
   * Run the `diagnose` command:
@@ -182,9 +182,9 @@ You should see `DIAGNOSTIC_PASSED` before proceeding to the next steps.
 
 The bitstream you program should correspond to the topology you want to deploy. In this section, you program a SqueezeNet bitstream and deploy the classification sample with a SqueezeNet model that you used the Model Optimizer to convert in the steps before.
 
-**IMPORTANT**: Only use bitstreams from the installed version of the Intel Distribution of OpenVINO toolkit. Bitstreams from older versions of the OpenVINO™ toolkit are incompatible with later versions of the Intel Distribution of OpenVINO toolkit. For example, you cannot use the `1-0-1_A10DK_FP16_Generic` bitstream, when the Intel Distribution of OpenVINO toolkit supports the `2-0-1_A10DK_FP16_Generic` bitstream.
+**IMPORTANT**: Only use bitstreams from the installed version of the Intel® Distribution of OpenVINO™ toolkit. Bitstreams from older versions of the Intel® Distribution of OpenVINO™ toolkit are incompatible with later versions of the Intel® Distribution of OpenVINO™ toolkit. For example, you cannot use the `1-0-1_A10DK_FP16_Generic` bitstream, when the Intel® Distribution of OpenVINO™ toolkit supports the `2-0-1_A10DK_FP16_Generic` bitstream.
 
-Depending on how many bitstreams you selected, there are different folders for each FPGA card type which were downloaded in the Intel Distribution of OpenVINO package:
+Depending on how many bitstreams you selected, there are different folders for each FPGA card type which were downloaded in the Intel® Distribution of OpenVINO™ toolkit package:
 
 
   * For the Intel® Vision Accelerator Design with Intel® Arria® 10 FPGA the pre-trained bistreams are in `/opt/intel/computer_vision_sdk/bitstreams/a10_vision_design_bitstreams`. This example uses a SqueezeNet bitstream with low precision for the classification sample.
@@ -213,14 +213,14 @@ Depending on how many bitstreams you selected, there are different folders for e
 	- The following steps 1-5 need to be done only once for a new Intel® Arria 10 FPGA card.
 
 
-  * Plug in the Micro USB cable to the card and your host system.
+  * Plug in the micro USB cable to the card and your host system.
   * Run `jtagconfig` to ensure that the cable is properly inserted:
 		`jtagconfig`
 	
   * Use `jtagconfig` to slow the clock:
 		`jtagconfig --setparam 1 JtagClock 6M`
 	
-  * Store the Intel Vision Accelerator Design with Intel Arria 10 FPGA bistream on the board:
+  * Store the Intel® Vision Accelerator Design with Intel® Arria® 10 FPGA bistream on the board:
 		`aocl flash acl0 /opt/intel/computer_vision_sdk/bitstreams/a10_vision_design_bitstreams/5-0_PL1_FP11_SqueezeNet.aocx`
 	
 
@@ -243,7 +243,7 @@ In this section, you create an FP16 model suitable for hardware accelerators. Fo
   * Go to `/home/<user>/squeezenet1.1_FP16`:
 		`cd /home/<user>/squeezenet1.1_FP16`
 	
-  * Use the Model Optimizer to convert an FP16 SqueezeNet Caffe model into an optimized Intermediate Representation (IR):
+  * Use the Model Optimizer to convert an FP16 SqueezeNet Caffe* model into an optimized Intermediate Representation (IR):
 		`python3 /opt/intel/computer_vision_sdk/deployment_tools/model_optimizer/mo.py --input_model /home/<user>/openvino_models/FP32/classification/squeezenet/1.1/caffe/squeezenet1.1.caffemodel --data_type FP16 --output_dir .`
 	
   * The `squeezenet1.1.labels` file contains the classes `ImageNet` uses. This file is included so that the inference results show text instead of classification numbers. Copy `squeezenet1.1.labels` to the your optimized model location:
@@ -275,15 +275,15 @@ The throughput on FPGA is listed and may show a lower FPS. This is due to the in
 
 `./classification_sample -i car.png -m ~/squeezenet1.1_FP16/squeezenet1.1.xml -d HETERO:FPGA,CPU -ni 100`
 
-Congratulations, You are done with the OpenVINO installation for FPGA. To learn more about how OpenVINO works, the Hello World tutorial and are other resources are provided below.
+Congratulations, You are done with the Intel® Distribution of OpenVINO™ toolkit installation for FPGA. To learn more about how the Intel® Distribution of OpenVINO™ toolkit works, the Hello World tutorial and are other resources are provided below.
 
 ## Hello World Face Detection Tutorial
 
-Use the  [OpenVINO with FPGA Hello World Face Detection Exercise](https://github.com/fritzboyle/openvino-with-fpga-hello-world-face-detection)to learn more about how the software and hardware work together.
+Use the  [Intel® Distribution of OpenVINO™ toolkit with FPGA Hello World Face Detection Exercise](https://github.com/fritzboyle/openvino-with-fpga-hello-world-face-detection)to learn more about how the software and hardware work together.
 
 ## Additional Resources
 
-Intel® Distribution of OpenVINO™ home page:  [https://software.intel.com/en-us/openvino-toolkit](https://software.intel.com/en-us/openvino-toolkit)
+Intel® Distribution of OpenVINO™ toolkit home page:  [https://software.intel.com/en-us/openvino-toolkit](https://software.intel.com/en-us/openvino-toolkit)
 
 Intel® Distribution of OpenVINO™ toolkit documentation:  [https://software.intel.com/en-us/openvino-toolkit/documentation/featured](https://software.intel.com/en-us/openvino-toolkit/documentation/featured)
 
