@@ -1,16 +1,14 @@
-# Configuration Guide for OpenVINO 2018R5 and the Intel® Programmable Acceleration Card with Intel Arria® 10 GX FPGA on CentOS 
-
-
+# Configuration Guide for Intel® Distribution of OpenVINO™ toolkit 2018R5 and the Intel® Programmable Acceleration Card with Intel® Arria® 10 FPGA GX on CentOS* 
 
 ## Getting Started
 
-The following describes the set-up of Intel® OpenVINO™ Tool Kit on Centos 7.4.  This is based upon a completely fresh install of Centos 7.4 with developer tools included.  This document was written for OpenVINO 2018 release 5 and may be largely applicable for later versions.  Official intel documentation for the install process can be found in the following locations and it is highly recommended that these are read, especially for new users.  This document serves as a guide and in some cases adds additional detail, specifically for an install with sudo privileges on Centos 7.4.
+The following describes the set-up of the Intel® Distribution of OpenVINO™ toolkit on CentOS* 7.4.  This is based upon a completely fresh install of CentOS 7.4 with developer tools included.  This document was written for the Intel® Distribution of OpenVINO™ toolkit 2018 release 5 and may be largely applicable for later versions.  Official Intel® documentation for the install process can be found in the following locations and it is highly recommended that these are read, especially for new users.  This document serves as a guide, and in some cases, adds additional detail, specifically for an install with sudo privileges on CentOS 7.4.
 
-[Intel Acceleration Stack Quick Start Guide](https://www.intel.com/content/dam/altera-www/global/en_US/pdfs/literature/ug/ug-qs-ias-v1-1.pdf)
+[Intel® Acceleration Stack for FPGAs Quick Start Guide](https://www.intel.com/content/dam/altera-www/global/en_US/pdfs/literature/ug/ug-qs-ias-v1-1.pdf)
 
-[OpenCL on Intel PAC Quick Start Guide](https://www.intel.com/content/dam/altera-www/global/en_US/pdfs/literature/ug/ug-qs-ias-opencl-a10-v1-1.pdf)
+[OpenCL™ on Intel® PAC Quick Start Guide](https://www.intel.com/content/dam/altera-www/global/en_US/pdfs/literature/ug/ug-qs-ias-opencl-a10-v1-1.pdf)
 
-[Installing the OpenVINO Toolkit for Linux](https://software.intel.com/en-us/articles/OpenVINO-Install-Linux)
+[Installing the Intel® Distribution of OpenVINO™ toolkit for Linux*](https://software.intel.com/en-us/articles/OpenVINO-Install-Linux)
 
 For details about installing CentOS 7.4, please see the associated section in Appendix A.
 
@@ -18,7 +16,7 @@ Optional: Install NTFS support for transferring large installers if already down
 `sudo yum -y install epel-release`
 
 `sudo yum -y install ntfs-3g`
-## Install PAC & Acceleration Stack
+## Install Intel® PAC & the Intel® Programmable Acceleration Card Stack
 
 Download version 1.1 of the Acceleration Stack for Runtime from here:
 
@@ -42,11 +40,11 @@ Select Y to install OPAE and accept license and when asked, specify `/home/[user
 
 Tools will be installed to the following directories:
 
-Quartus Programmer: ~/tools/inteltrestack/intelFPGA_pro/qprogrammer
+Intel® Quartus® software Programmer: ~/tools/inteltrestack/intelFPGA_pro/qprogrammer
 
-OpenCL Run Time Environment: ~/tools/intelrtestack/intelFPGA_pro/aclrte-linux64
+OpenCL™ Run Time Environment: ~/tools/intelrtestack/intelFPGA_pro/aclrte-linux64
 
-Intel FPGA Acceleration Stack: ~/tools/intelrtestack/a10_gx_pac_ias_1_1_pv
+Intel® Acceleration Stack for FPGAs: ~/tools/intelrtestack/a10_gx_pac_ias_1_1_pv
 
   
 
@@ -64,15 +62,15 @@ Check the version of the FPGA Interface Manager firmware on the PAC board.
 
 `sudo fpgainfo fme`
 
-If the reported _Pr Interface Id_ is not `9926ab6d-6c92-5a68-aabc-a7d84c545738` then follow the instructions in section 4 of the [Intel Acceleration Stack Quick Start Guide](https://www.intel.com/content/dam/altera-www/global/en_US/pdfs/literature/ug/ug-qs-ias-v1-1.pdf) to update the FME.
+If the reported _Pr Interface Id_ is not `9926ab6d-6c92-5a68-aabc-a7d84c545738` then follow the instructions in section 4 of the [Intel® Acceleration Stack for FPGAs Quick Start Guide](https://www.intel.com/content/dam/altera-www/global/en_US/pdfs/literature/ug/ug-qs-ias-v1-1.pdf) to update the FME.
 
-Run the built in self-test to verify operation of the Acceleration Stack and PAC in a non-virtualized environment.
+Run the built in self-test to verify operation of the Acceleration Stack and Intel® PAC in a non-virtualized environment.
 
 `sudo sh -c "echo 20 > /sys/kernel/mm/hugepages/hugepages-2048kB/nr_hugepages"`
 
 `sudo fpgabist $OPAE_PLATFORM_ROOT/hw/samples/nlb_mode_3/bin/nlb_mode_3.gbs`
 
-## Extract and Verify the Acceleration Stack OpenCL BSP
+## Extract and Verify the Intel® Acceleration Stack for FPGAs OpenCL™ BSP
 
 Extract the BSP
 
@@ -80,7 +78,7 @@ Extract the BSP
 
 `sudo tar xf opencl_bsp.tar.gz`
 
-Create an initialization script ~/init_openvino.sh with the following content that can be run upon opening a new terminal or rebooting.  This will source the script ran above as well as setting up the OpenCL environment.
+Create an initialization script ~/init_openvino.sh with the following content that can be run upon opening a new terminal or rebooting.  This will source the script ran above as well as setting up the OpenCL™ environment.
 
 `source \$HOME/tools/intelrtestack/init_env.sh`
 
@@ -102,11 +100,11 @@ Source the script:
 
 `source ~/init_openvino.sh`
 
-Some of the settings made in the child scripts need a reboot to take effect.  Reboot the machine and source the script again.  Note that this script should be sourced each time a new terminal is opened for use with the Acceleration Stack and OpenVINO.
+Some of the settings made in the child scripts need a reboot to take effect.  Reboot the machine and source the script again.  Note that this script should be sourced each time a new terminal is opened for use with the Intel® Acceleration Stack for FPGAs and Intel® Distribution of OpenVINO™ toolkit.
 
 `source ~/init_openvino.sh`
 
-Install the OpenCL driver:
+Install the OpenCL™ driver:
 
 `cd ~`
 
@@ -116,7 +114,7 @@ Select Y when asked to install the BSP.  Note that the following warning can be 
 
 `WARNING: install not implemented.  Please refer to DCP Quick Start User Guide.`
 
-Program the PAC board with a pre-compiled aocx file (OpenCL based FPGA bitstream).
+Program the Intel® PAC board with a pre-compiled aocx file (OpenCL™ based FPGA bitstream).
 
 `cd \$OPAE_PLATFORM_ROOT/opencl`
 
@@ -136,10 +134,10 @@ Run the Hello World application:
 
 `./bin/host`
 
-## Adding OpenVINO with FPGA Support to Environment Variables
+## Adding Intel® Distribution of OpenVINO™ toolkit with FPGA Support to Environment Variables
 
 
-To run OpenVINO, add the last 4 commands to the ~/init_openvino.sh script.  The previous content is shown as well.
+To run the Intel® Distribution of OpenVINO™ toolkit, add the last 4 commands to the ~/init_openvino.sh script.  The previous content is shown as well.
 
 `source \$HOME/tools/intelrtestack/init_env.sh`
 
@@ -170,9 +168,9 @@ Source the script
 
 `source ~/init_openvino.sh`
 
-## Using OpenVINO
+## Using the Intel® Distribution of OpenVINO™ toolkit
 
-Run inference with OpenVINO independent of the demo scripts using the SqueezeNet model that was download by the scripts.  For convenience we will copy the necessary files to a local directory.  If the workstation has been rebooted or a new terminal is opened, source the script above first.
+Run inference with the Intel® Distribution of OpenVINO™ toolkit independent of the demo scripts using the SqueezeNet model that was download by the scripts.  For convenience we will copy the necessary files to a local directory.  If the workstation has been rebooted or a new terminal is opened, source the script above first.
 
 `mkdir ~/openvino_test`
 
@@ -198,15 +196,15 @@ Increase the number of iterations with the -ni option to reduce the impact of in
 
 `classification_sample -m squeezenet1.1.xml -i $IE_INSTALL/demo/car.png -d HETERO:FPGA,CPU -ni 100`
 
-Congratulations, You are done with the OpenVINO installation for FPGA. To learn more about how OpenVINO works, the Hello World tutorial and are other resources are provided below.
+Congratulations, You are done with the Intel® Distribution of OpenVINO™ toolkit installation for FPGA. To learn more about how the Intel® Distribution of OpenVINO™ toolkit works, the Hello World tutorial and are other resources are provided below.
 
 ## Hello World Face Detection Tutorial
 
-Use the  [OpenVINO with FPGA Hello World Face Detection Exercise](https://github.com/fritzboyle/openvino-with-fpga-hello-world-face-detection)to learn more about how the software and hardware work together.
+Use the  [Intel® Distribution of OpenVINO™ toolkit with FPGA Hello World Face Detection Exercise](https://github.com/fritzboyle/openvino-with-fpga-hello-world-face-detection)to learn more about how the software and hardware work together.
 
 ## Additional Resources
 
-Intel® Distribution of OpenVINO™ home page:  [https://software.intel.com/en-us/openvino-toolkit](https://software.intel.com/en-us/openvino-toolkit)
+Intel® Distribution of OpenVINO™ toolkit home page:  [https://software.intel.com/en-us/openvino-toolkit](https://software.intel.com/en-us/openvino-toolkit)
 
 Intel® Distribution of OpenVINO™ toolkit documentation:  [https://software.intel.com/en-us/openvino-toolkit/documentation/featured](https://software.intel.com/en-us/openvino-toolkit/documentation/featured)
 
