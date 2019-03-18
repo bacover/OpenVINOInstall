@@ -1,4 +1,4 @@
-# Configuration Guide for the Intel® Distribution of OpenVINO™ toolkit 2018R5 and the Intel® Vision Accelerator Design with an Intel® Arria® 10 FPGA (IEI's Mustang-F100-A10) on Linux*
+# Configuration Guide for the Intel® Distribution of OpenVINO™ toolkit 2019R1 and the Intel® Vision Accelerator Design with an Intel® Arria® 10 FPGA (IEI's Mustang-F100-A10) on Linux*
 
 
 Configuration Notes:
@@ -61,11 +61,11 @@ Configuration Notes:
 
 
 
-## 2. Set Up the Intel® Vision Accelerator Design with Intel® Arria® 10 FPGA for R5
+## 2. Set Up the Intel® Vision Accelerator Design with Intel® Arria® 10 FPGA for 2019R1
 
-For the R5 release, the Intel® Distribution of OpenVINO™ toolkit introduced a new board support package (BSP) `a10_1150_sg1` for the Intel® Vision Accelerator Design with an Intel® Arria®  10 FPGA, which is included into the `fpga_support_files.tgz` archive. To program the bitstreams for the Intel® Distribution of OpenVINO™ toolkit R5, you need to program the BSP into the board using the USB blaster:
+For the 2019R1 release, the Intel® Distribution of OpenVINO™ toolkit introduced a new board support package (BSP) `a10_1150_sg1` for the Intel® Vision Accelerator Design with an Intel® Arria®  10 FPGA, which is included into the `fpga_support_files.tgz` archive. To program the bitstreams for the Intel® Distribution of OpenVINO™ toolkit 2019R1, you need to program the BSP into the board using the USB blaster:
 
-**NOTE**: These steps apply only if you update to the Intel® Distribution of OpenVINO™ toolkit R5. Otherwise, you can skip them.
+**NOTE**: These steps apply only if you update to the Intel® Distribution of OpenVINO™ toolkit 2019R1. Otherwise, you can skip them.
 
 
   * Go to the ` config` folder of the `fpga_support_files` directory where the a10_1150_sg1 is located:
@@ -121,11 +121,11 @@ Your output is similar to:
 02E660DD   10AX115H1(.|E2|ES)/10AX115H2/.. 
 `
 
-  * Download [Intel® Quartus® Prime Software Lite Edition 17.1](http://fpgasoftware.intel.com/17.1/?edition=lite). Install the Intel® Quartus® Prime Software Lite to `/home/<user>/intelFPGA/17.1` directory.
+  * Download [Intel® Quartus® Prime Software Lite Edition 18.1](http://fpgasoftware.intel.com/18.1/?edition=lite). Install the Intel® Quartus® Prime Software Lite to `/home/<user>/intelFPGA/18.1` directory.
 		**NOTE**: You will need the complete the Intel® Quartus® Prime Software Lite version when you want to program the `boardtest_1ddr_top.aocx` into the flash for permanent availability.
 	
   * Export the Intel® Quartus® Prime Software Lite environment variable:
-		`export QUARTUS_ROOTDIR=/home/<user>/intelFPGA/17.1/quartus
+		`export QUARTUS_ROOTDIR=/home/<user>/intelFPGA/18.1/quartus
 `
 	
   * Use `jtagconfig` to slow the clock:
@@ -159,8 +159,8 @@ Your output is similar to:
 		`source /home/<user>/Downloads/fpga_support_file/setup_env.sh
 `
 	
-  * Uninstall the previous R4 BSP before installing the OpenCL drivers for the R5 BSP:
-		`aocl uninstall /opt/altera/aocl-pro-rte/aclrte-linux64/board/<R4_BSP_package>/			`
+  * Uninstall the previous BSP before installing the OpenCL drivers for the 2019R1 BSP:
+		`aocl uninstall /opt/altera/aocl-pro-rte/aclrte-linux64/board/<BSP_package>/			`
 	
   * Export and source the environment script:
 `export AOCL_BOARD_PACKAGE_ROOT=/opt/altera/aocl-pro-rte/aclrte-linux64/board/a10_1150_sg1
@@ -200,7 +200,7 @@ Depending on how many bitstreams you selected, there are different folders for e
   * Choose the option based on which card you have:
 		
   * Program the bitstream for the Intel® Vision Accelerator Design with Intel® Arria® 10 FPGA:
-				`aocl program acl0 /opt/intel/computer_vision_sdk/bitstreams/a10_vision_design_bitstreams/5-0_PL1_FP11_SqueezeNet.aocx`
+				`aocl program acl0 /opt/intel/computer_vision_sdk/bitstreams/a10_vision_design_bitstreams/2019R1_PL1_FP11_SqueezeNet.aocx`
 			
 		
 	
@@ -221,7 +221,7 @@ Depending on how many bitstreams you selected, there are different folders for e
 		`jtagconfig --setparam 1 JtagClock 6M`
 	
   * Store the Intel® Vision Accelerator Design with Intel® Arria® 10 FPGA bistream on the board:
-		`aocl flash acl0 /opt/intel/computer_vision_sdk/bitstreams/a10_vision_design_bitstreams/5-0_PL1_FP11_SqueezeNet.aocx`
+		`aocl flash acl0 /opt/intel/computer_vision_sdk/bitstreams/a10_vision_design_bitstreams/2019R1_PL1_FP11_SqueezeNet.aocx`
 	
 
 
